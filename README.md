@@ -4,13 +4,13 @@ A Python-based log analysis and investigation tool designed to help developers a
 
 ## Features
 
-- 📊 **Real Log Analysis**: Download and analyze real-world logs from various sources
+- 📊 **Real Log Analysis**: Download and analyze real-world JSON logs from Elastic examples
 - 🔍 **AI-Powered Analysis**: Use Google Gemini AI for intelligent log analysis
-- 📈 **Performance Metrics**: Track request durations and performance patterns
+- 📈 **Smart Field Mapping**: Automatically normalize and validate log fields
 - 🚨 **Error Detection**: Identify and categorize errors and warnings
 - 🔐 **Security Monitoring**: Detect suspicious activities and security threats
-- 📝 **Comprehensive Logging**: Built-in logging with configurable levels
-- 🌐 **Internet Sources**: Access to 8+ real-world log sources
+- 📝 **JSON Lines Support**: Handle both JSON arrays and JSON Lines format
+- 🌐 **Internet Sources**: Access to real-world log sources from Elastic examples
 
 ## Installation
 
@@ -20,14 +20,20 @@ A Python-based log analysis and investigation tool designed to help developers a
    cd LogInvestigator-Agent
    ```
 
-2. **Install dependencies**
+2. **Create and activate virtual environment**
+   ```bash
+   python -m venv venv
+   source venv/bin/activate  # On Windows: venv\Scripts\activate
+   ```
+
+3. **Install dependencies**
    ```bash
    pip install -r requirements.txt
    ```
 
-3. **Set up environment variables**
+4. **Set up environment variables**
    ```bash
-   cp env.example .env
+   cp .env.example .env
    # Edit .env file with your Gemini API key
    ```
 
@@ -35,7 +41,7 @@ A Python-based log analysis and investigation tool designed to help developers a
 
 ### Basic Usage
 
-Run the application to automatically download and analyze web server logs:
+Run the application to automatically download and analyze sample JSON logs:
 ```bash
 python main.py
 ```
@@ -49,24 +55,16 @@ python main.py --list-sources
 
 **Download and analyze specific logs:**
 ```bash
-# Analyze Hadoop logs
-python main.py --source hadoop_logs
+# Analyze sample JSON logs
+python main.py --source sample_json_logs
 
-# Analyze Spark logs
-python main.py --source spark_logs
-
-# Analyze Elasticsearch logs
-python main.py --source elasticsearch_logs
-```
-
-**Download and convert to JSON:**
-```bash
-python main.py --convert web_server_logs
+# Download and convert to JSON format
+python main.py --convert sample_json_logs
 ```
 
 **Analyze a specific file:**
 ```bash
-python main.py --file downloaded_logs/hadoop_logs.log
+python main.py --file sample_json_logs.log
 ```
 
 ## Environment Variables
@@ -83,24 +81,15 @@ GEMINI_TEMPERATURE=0.3
 # Log Configuration
 LOG_FILE=log_investigator.log
 LOG_LEVEL=INFO
-SAMPLE_LOGS_FILE=downloaded_logs/web_server_logs.log
+SAMPLE_LOGS_FILE=sample_json_logs.log
 ```
 
 ## Available Log Sources
 
-### Web Servers
-- `web_server_logs` - Nginx web server logs
-- `github_logs` - Apache web server logs
-- `sample_json_logs` - JSON format nginx logs
+### Current Sources
+- `sample_json_logs` - Real Nginx JSON logs from Elastic examples repository
 
-### Big Data & Cloud
-- `hadoop_logs` - Hadoop distributed computing
-- `spark_logs` - Apache Spark processing
-
-### Infrastructure
-- `zookeeper_logs` - Apache ZooKeeper
-- `hpc_logs` - High Performance Computing
-- `elasticsearch_logs` - Elasticsearch search engine
+The system downloads real-world logs from the Elastic examples repository, which contains anonymized web server logs in JSON format.
 
 ## Project Structure
 
@@ -108,14 +97,13 @@ SAMPLE_LOGS_FILE=downloaded_logs/web_server_logs.log
 log-investigator/
 ├── main.py              # Main application entry point
 ├── config.py            # Configuration management
-├── log_loader.py        # Log file loading and validation
+├── log_loader.py        # Log file loading and validation (supports JSON Lines)
 ├── log_downloader.py    # Download logs from internet sources
-├── ai_analyzer.py       # AI-powered log analysis
+├── ai_analyzer.py       # AI-powered log analysis using Gemini
 ├── utils.py             # Utilities and display formatting
-├── download_logs.py     # CLI for downloading logs
 ├── requirements.txt     # Python dependencies
 ├── .env                 # Environment variables (not tracked by git)
-├── env.example          # Environment variables template
+├── .env.example         # Environment variables template
 ├── .gitignore          # Git ignore rules
 └── README.md           # This file
 ```
@@ -132,8 +120,9 @@ log-investigator/
 
 1. **Get Gemini API Key**: Visit https://makersuite.google.com/app/apikey
 2. **Configure Environment**: Add your API key to `.env` file
-3. **Run Analysis**: `python main.py`
-4. **Explore Sources**: `python main.py --list-sources`
+3. **Activate Virtual Environment**: `source venv/bin/activate`
+4. **Run Analysis**: `python main.py`
+5. **Explore Sources**: `python main.py --list-sources`
 
 ## AI Analysis Features
 
@@ -143,6 +132,32 @@ The AI analysis provides:
 - ⚠️ **Warnings**: Important alerts and notifications
 - 📊 **Key Metrics**: Performance and usage statistics
 - 🎯 **Immediate Actions**: Specific recommendations
+
+## Log Format Support
+
+The system supports multiple log formats:
+- **JSON Arrays**: Traditional JSON array format
+- **JSON Lines**: One JSON object per line (JSONL format)
+- **Field Normalization**: Automatically maps common field names
+- **Smart Validation**: Adds missing required fields with intelligent defaults
+
+## Troubleshooting
+
+### Common Issues
+
+1. **ModuleNotFoundError: No module named 'google'**
+   ```bash
+   pip install google-generativeai
+   ```
+
+2. **GEMINI_API_KEY is required**
+   - Ensure you have a valid Gemini API key in your `.env` file
+   - Get your API key from https://makersuite.google.com/app/apikey
+
+3. **Virtual environment not activated**
+   ```bash
+   source venv/bin/activate  # On Windows: venv\Scripts\activate
+   ```
 
 ## Contributing
 
@@ -158,7 +173,7 @@ If you encounter any issues or have questions, please open an issue on GitHub.
 
 ---
 
-**Note**: This tool downloads real-world logs from open source repositories for educational and analysis purposes. All logs are anonymized and free to use.
+**Note**: This tool downloads real-world logs from the Elastic examples repository for educational and analysis purposes. All logs are anonymized and free to use.
 
 
 

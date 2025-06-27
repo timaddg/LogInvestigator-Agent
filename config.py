@@ -54,7 +54,7 @@ class Config:
     @property
     def sample_logs_file(self) -> str:
         """Get sample logs file path from environment or use default."""
-        return os.getenv("SAMPLE_LOGS_FILE", "downloaded_logs/web_server_logs.log")
+        return os.getenv("SAMPLE_LOGS_FILE", "sample_json_logs.log")
 
 
 # Global configuration instance
