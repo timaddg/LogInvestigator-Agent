@@ -23,10 +23,37 @@ class LogLoader:
                 raise FileNotFoundError(f"Log file '{self.file_path}' not found")
             
             with open(self.file_path, 'r') as f:
-                logs = json.load(f)
+                content = f.read().strip()
+            
+            # Try to parse as regular JSON array first
+            try:
+                logs = json.loads(content)
+                if isinstance(logs, list):
+                    self._validate_logs(logs)
+                    print(f"✅ Loaded {len(logs)} log entries from {self.file_path}")
+                    return logs
+            except json.JSONDecodeError:
+                pass
+            
+            # If that fails, try to parse as JSON Lines (one JSON object per line)
+            logs = []
+            lines = content.split('\n')
+            for i, line in enumerate(lines):
+                line = line.strip()
+                if not line:
+                    continue
+                try:
+                    log_entry = json.loads(line)
+                    logs.append(log_entry)
+                except json.JSONDecodeError as e:
+                    print(f"⚠️ Warning: Skipping invalid JSON at line {i+1}: {e}")
+                    continue
+            
+            if not logs:
+                raise ValueError("No valid JSON entries found in file")
             
             self._validate_logs(logs)
-            print(f"✅ Loaded {len(logs)} log entries from {self.file_path}")
+            print(f"✅ Loaded {len(logs)} log entries from {self.file_path} (JSON Lines format)")
             return logs
         
         except FileNotFoundError as e:
@@ -49,15 +76,43 @@ class LogLoader:
         if not logs:
             raise ValueError("Log file is empty")
         
-        # Validate each log entry has required fields
-        required_fields = ['timestamp', 'level', 'message']
+        # Validate each log entry and normalize field names
         for i, log in enumerate(logs):
             if not isinstance(log, dict):
                 raise ValueError(f"Log entry {i} must be a JSON object")
             
-            for field in required_fields:
-                if field not in log:
-                    raise ValueError(f"Log entry {i} missing required field: {field}")
+            # Normalize field names for consistency
+            if 'time' in log and 'timestamp' not in log:
+                log['timestamp'] = log['time']
+            if 'remote_ip' in log and 'ip_address' not in log:
+                log['ip_address'] = log['remote_ip']
+            
+            # Add missing required fields with defaults
+            if 'timestamp' not in log:
+                log['timestamp'] = 'unknown'
+            if 'level' not in log:
+                # Try to infer level from response code or other fields
+                if 'response' in log:
+                    response = log['response']
+                    if isinstance(response, int):
+                        if response >= 500:
+                            log['level'] = 'ERROR'
+                        elif response >= 400:
+                            log['level'] = 'WARN'
+                        else:
+                            log['level'] = 'INFO'
+                    else:
+                        log['level'] = 'INFO'
+                else:
+                    log['level'] = 'INFO'
+            if 'message' not in log:
+                # Create a message from available fields
+                if 'request' in log:
+                    log['message'] = f"HTTP request: {log['request']}"
+                elif 'remote_ip' in log:
+                    log['message'] = f"Request from {log['remote_ip']}"
+                else:
+                    log['message'] = "Log entry"
     
     def get_log_statistics(self, logs: List[Dict[str, Any]]) -> Dict[str, Any]:
         """Generate statistics from log data."""

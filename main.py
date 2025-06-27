@@ -107,12 +107,11 @@ def main():
         formatter_class=argparse.RawDescriptionHelpFormatter,
         epilog="""
 Examples:
-  python main.py                                    # Download and analyze web server logs
-  python main.py --file downloaded_logs/nginx.log   # Analyze specific file
+  python main.py                                    # Download and analyze sample JSON logs
+  python main.py --file sample_json_logs.log       # Analyze specific file
   python main.py --list-sources                     # List available log sources
-  python main.py --download nginx_logs              # Download and analyze nginx logs
-  python main.py --convert nginx_logs               # Download, convert, and analyze
-  python main.py --source hadoop_logs               # Download and analyze Hadoop logs
+  python main.py --download sample_json_logs        # Download and analyze sample JSON logs
+  python main.py --convert sample_json_logs         # Download, convert, and analyze
         """
     )
     
@@ -143,8 +142,8 @@ Examples:
     parser.add_argument(
         '--source', '-s',
         type=str,
-        default='web_server_logs',
-        help='Default source to download and analyze (default: web_server_logs)'
+        default='sample_json_logs',
+        help='Default source to download and analyze (default: sample_json_logs)'
     )
     
     args = parser.parse_args()
@@ -154,16 +153,15 @@ Examples:
         if not config.gemini_api_key:
             exit_with_error("GEMINI_API_KEY is required. Please check your .env file.")
         
-        # Create application instance
-        app = LogInvestigator(args.file)
-        
         # Handle different modes
         if args.list_sources:
             print_header("Available Log Sources")
+            app = LogInvestigator()
             app.list_sources()
             
         elif args.download:
             print_header(f"Downloading and Analyzing {args.download}")
+            app = LogInvestigator()
             downloaded_file = app.download_logs(args.download)
             if downloaded_file:
                 print_info(f"Downloaded to: {downloaded_file}")
@@ -175,6 +173,7 @@ Examples:
                 
         elif args.convert:
             print_header(f"Downloading, Converting, and Analyzing {args.convert}")
+            app = LogInvestigator()
             json_file = app.download_and_convert(args.convert)
             if json_file:
                 print_info(f"Converted to: {json_file}")
@@ -186,11 +185,13 @@ Examples:
                 
         elif args.file:
             # Analyze the specified file
+            app = LogInvestigator(args.file)
             app.run()
             
         else:
-            # Default: download and analyze web server logs
+            # Default: download and analyze sample JSON logs
             print_header(f"Auto-downloading and Analyzing {args.source}")
+            app = LogInvestigator()
             downloaded_file = app.download_logs(args.source)
             if downloaded_file:
                 print_info(f"Downloaded to: {downloaded_file}")
