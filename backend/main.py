@@ -10,11 +10,14 @@ import argparse
 from typing import Optional
 
 # Import our modules
-from config import config
-from log_loader import LogLoader
-from ai_analyzer import AIAnalyzer
-from log_downloader import LogDownloader
-from utils import (
+import os
+sys.path.append(os.path.dirname(__file__))
+
+from config.config import config
+from logic.processors.log_loader import LogLoader
+from logic.analyzers.ai_analyzer import AIAnalyzer
+from logic.processors.log_downloader import LogDownloader
+from utils.utils import (
     print_header, print_success, print_error, print_info,
     display_log_statistics, display_analysis_results,
     estimate_token_usage, display_token_estimate,
@@ -132,7 +135,7 @@ Examples:
     parser.add_argument(
         '--file', '-f',
         type=str,
-        help='Log file to analyze (default: auto-download web server logs)'
+        help='Log file to analyze (JSON, LOG, TXT, CSV formats supported)'
     )
     
     parser.add_argument(
@@ -157,66 +160,41 @@ Examples:
         '--source', '-s',
         type=str,
         default='sample_json_logs',
-        help='Default source to download and analyze (default: sample_json_logs)'
+        help='Default source to download and analyze'
+    )
+    
+    parser.add_argument(
+        '--optimize', '-o',
+        action='store_true',
+        help='Enable log optimization for large files'
     )
     
     args = parser.parse_args()
     
-    try:
-        # Validate configuration
-        if not config.gemini_api_key:
-            exit_with_error("GEMINI_API_KEY is required. Please check your .env file.")
-        
-        # Handle different modes
-        if args.list_sources:
-            print_header("Available Log Sources")
-            app = LogInvestigator()
-            app.list_sources()
-            
-        elif args.download:
-            print_header(f"Downloading and Analyzing {args.download}")
-            app = LogInvestigator()
-            downloaded_file = app.download_logs(args.download)
-            if downloaded_file:
-                print_info(f"Downloaded to: {downloaded_file}")
-                # Create new instance with downloaded file
-                app = LogInvestigator(downloaded_file)
-                app.run()
-            else:
-                exit_with_error("Failed to download logs")
-                
-        elif args.convert:
-            print_header(f"Downloading, Converting, and Analyzing {args.convert}")
-            app = LogInvestigator()
-            json_file = app.download_and_convert(args.convert)
-            if json_file:
-                print_info(f"Converted to: {json_file}")
-                # Create new instance with converted file
-                app = LogInvestigator(json_file)
-                app.run()
-            else:
-                exit_with_error("Failed to download and convert logs")
-                
-        elif args.file:
-            # Analyze the specified file
-            app = LogInvestigator(args.file)
-            app.run()
-            
-        else:
-            # Default: download and analyze sample JSON logs
-            print_header(f"Auto-downloading and Analyzing {args.source}")
-            app = LogInvestigator()
-            downloaded_file = app.download_logs(args.source)
-            if downloaded_file:
-                print_info(f"Downloaded to: {downloaded_file}")
-                # Create new instance with downloaded file
-                app = LogInvestigator(downloaded_file)
-                app.run()
-            else:
-                exit_with_error("Failed to download default logs")
-        
-    except Exception as e:
-        exit_with_error(f"Application initialization failed: {e}")
+    # Set optimization flag
+    if args.optimize:
+        os.environ['ENABLE_LOG_OPTIMIZATION'] = 'true'
+    
+    # Initialize LogInvestigator
+    log_investigator = LogInvestigator(args.file)
+    
+    # Handle different modes
+    if args.list_sources:
+        print_header("Available Log Sources")
+        log_investigator.list_sources()
+    elif args.download:
+        print_header(f"Downloading and Analyzing {args.download}")
+        log_investigator.download_logs(args.download)
+    elif args.convert:
+        print_header(f"Downloading, Converting, and Analyzing {args.convert}")
+        log_investigator.download_and_convert(args.convert)
+    elif args.file:
+        # Analyze the specified file
+        log_investigator.run()
+    else:
+        # Default: download and analyze sample JSON logs
+        print_header(f"Auto-downloading and Analyzing {args.source}")
+        log_investigator.download_logs(args.source)
 
 
 if __name__ == "__main__":

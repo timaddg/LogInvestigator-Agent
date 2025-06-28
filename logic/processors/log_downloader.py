@@ -9,7 +9,10 @@ import os
 from typing import List, Dict, Any, Optional
 from urllib.parse import urlparse
 import time
-from utils import print_info, print_success, print_error, print_warning
+import sys
+sys.path.append(os.path.join(os.path.dirname(__file__), '..', '..', 'backend'))
+
+from utils.utils import print_info, print_success, print_error, print_warning
 
 
 class LogDownloader:
@@ -83,36 +86,39 @@ class LogDownloader:
                 return source["url"]
         return None
     
-    def download_logs(self, source_name: str, output_file: str = None) -> Optional[str]:
-        """Download logs from a specific source."""
-        url = self.get_source_url(source_name)
+    def download_logs(self, source_name: str, output_file: Optional[str] = None) -> str:
+        """
+        Download logs from a specific source.
         
-        if not url:
-            print_error(f"Unknown source: {source_name}")
-            print_info("Available sources:")
-            sources = self.get_available_sources()
-            for source in sources:
-                print(f"  - {source['name']}: {source['description']}")
-            return None
+        Args:
+            source_name: Name of the log source to download
+            output_file: Optional output file path
+            
+        Returns:
+            Path to the downloaded file
+        """
+        if source_name not in self.sources:
+            raise ValueError(f"Unknown source: {source_name}. Available sources: {list(self.sources.keys())}")
         
-        output_file = output_file or f"{source_name}.log"
+        source = self.sources[source_name]
+        output_file = output_file or f"{source_name}.json"
+        
+        print_info(f"Downloading {source_name} logs...")
         
         try:
-            print_info(f"Downloading logs from {source_name}...")
-            response = self.session.get(url, timeout=30)
+            response = requests.get(source['url'], timeout=30)
             response.raise_for_status()
             
-            # Save the raw log file
+            # Save the raw content
             with open(output_file, 'w', encoding='utf-8') as f:
                 f.write(response.text)
             
-            print_success(f"Downloaded {len(response.text)} characters to {output_file}")
+            print_success(f"Downloaded {source_name} logs to {output_file}")
             return output_file
             
-        except requests.exceptions.RequestException as e:
-            print_warning(f"Failed to download from {source_name}: {e}")
-            print_info("Generating sample logs as fallback...")
-            return self._generate_sample_logs(source_name, output_file)
+        except requests.RequestException as e:
+            print_error(f"Failed to download {source_name} logs: {e}")
+            raise
     
     def download_and_convert_to_json(self, source_name: str, output_file: str = None) -> Optional[str]:
         """Download logs and convert to JSON format for analysis."""
@@ -285,7 +291,7 @@ class LogDownloader:
         downloaded_files = []
         
         for source_name in source_names:
-            output_file = os.path.join(output_dir, f"{source_name}.log")
+            output_file = os.path.join(output_dir, f"{source_name}.json")
             result = self.download_logs(source_name, output_file)
             if result:
                 downloaded_files.append(result)

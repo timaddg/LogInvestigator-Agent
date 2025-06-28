@@ -15,11 +15,14 @@ from werkzeug.utils import secure_filename
 from werkzeug.exceptions import RequestEntityTooLarge
 
 # Import our modules
-from config import config
-from log_loader import LogLoader
-from ai_analyzer import AIAnalyzer
-from log_downloader import LogDownloader
-from utils import display_log_statistics, display_analysis_results
+import sys
+sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
+
+from config.config import config
+from logic.processors.log_loader import LogLoader
+from logic.analyzers.ai_analyzer import AIAnalyzer
+from logic.processors.log_downloader import LogDownloader
+from utils.utils import display_log_statistics, display_analysis_results
 
 app = Flask(__name__)
 CORS(app)  # Enable CORS for all routes

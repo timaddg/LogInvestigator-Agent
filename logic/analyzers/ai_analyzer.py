@@ -6,7 +6,11 @@ Handles Google Gemini API interactions and log analysis with token optimization.
 import json
 import google.generativeai as genai
 from typing import List, Dict, Any, Optional
-from config import config
+import sys
+import os
+sys.path.append(os.path.join(os.path.dirname(__file__), '..', '..', 'backend'))
+
+from config.config import config
 import random
 from collections import Counter
 

@@ -1,0 +1,89 @@
+[
+  {
+    "timestamp": "2024-01-15T10:30:15Z",
+    "level": "INFO",
+    "service": "web-server",
+    "message": "Server started on port 8080",
+    "ip": "192.168.1.100",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36"
+  },
+  {
+    "timestamp": "2024-01-15T10:30:20Z",
+    "level": "INFO",
+    "service": "web-server",
+    "message": "GET /api/users HTTP/1.1 200 OK",
+    "ip": "192.168.1.101",
+    "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36",
+    "response_time": 45
+  },
+  {
+    "timestamp": "2024-01-15T10:30:25Z",
+    "level": "WARN",
+    "service": "database",
+    "message": "Connection pool at 80% capacity",
+    "connections": 80,
+    "max_connections": 100
+  },
+  {
+    "timestamp": "2024-01-15T10:30:30Z",
+    "level": "ERROR",
+    "service": "web-server",
+    "message": "Database connection failed",
+    "ip": "192.168.1.102",
+    "error_code": "DB_CONN_001",
+    "retry_count": 3
+  },
+  {
+    "timestamp": "2024-01-15T10:30:35Z",
+    "level": "INFO",
+    "service": "web-server",
+    "message": "POST /api/auth/login HTTP/1.1 401 Unauthorized",
+    "ip": "192.168.1.103",
+    "user_agent": "PostmanRuntime/7.32.3",
+    "response_time": 120
+  },
+  {
+    "timestamp": "2024-01-15T10:30:40Z",
+    "level": "DEBUG",
+    "service": "cache",
+    "message": "Cache miss for key: user_profile_12345",
+    "cache_size": 1024,
+    "cache_hits": 85
+  },
+  {
+    "timestamp": "2024-01-15T10:30:45Z",
+    "level": "INFO",
+    "service": "web-server",
+    "message": "GET /api/products HTTP/1.1 200 OK",
+    "ip": "192.168.1.104",
+    "user_agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36",
+    "response_time": 67
+  },
+  {
+    "timestamp": "2024-01-15T10:30:50Z",
+    "level": "WARN",
+    "service": "security",
+    "message": "Multiple failed login attempts detected",
+    "ip": "192.168.1.105",
+    "attempts": 5,
+    "time_window": "5m"
+  },
+  {
+    "timestamp": "2024-01-15T10:30:55Z",
+    "level": "INFO",
+    "service": "web-server",
+    "message": "PUT /api/users/12345 HTTP/1.1 200 OK",
+    "ip": "192.168.1.106",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36",
+    "response_time": 89
+  },
+  {
+    "timestamp": "2024-01-15T10:31:00Z",
+    "level": "ERROR",
+    "service": "payment",
+    "message": "Payment processing failed",
+    "transaction_id": "TXN_789012",
+    "error_code": "PAY_001",
+    "amount": 99.99
+  }
+] 

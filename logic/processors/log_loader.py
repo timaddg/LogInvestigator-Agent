@@ -1,12 +1,17 @@
 """
-Log loader module for Log Investigator.
-Handles loading and validating log files.
+Log Loader module for Log Investigator.
+Handles loading and parsing of log files in various formats.
 """
 
 import json
 import os
 from typing import List, Dict, Any, Optional
-from config import config
+from datetime import datetime
+import re
+import sys
+sys.path.append(os.path.join(os.path.dirname(__file__), '..', '..', 'backend'))
+
+from utils.utils import print_info, print_success, print_error, print_warning
 
 
 class LogLoader:
