@@ -17,6 +17,7 @@ from log_downloader import LogDownloader
 from utils import (
     print_header, print_success, print_error, print_info,
     display_log_statistics, display_analysis_results,
+    estimate_token_usage, display_token_estimate,
     exit_with_error, exit_success
 )
 
@@ -43,12 +44,15 @@ class LogInvestigator:
             # Step 2: Generate and display statistics
             self._display_statistics(logs)
             
-            # Step 3: Perform AI analysis
+            # Step 3: Estimate token usage
+            self._estimate_token_usage(logs)
+            
+            # Step 4: Perform AI analysis
             analysis_result = self._analyze_logs(logs)
             if not analysis_result:
                 exit_with_error("Failed to complete AI analysis")
             
-            # Step 4: Display results
+            # Step 5: Display results
             self._display_results(analysis_result)
             
             # Success
@@ -76,6 +80,16 @@ class LogInvestigator:
         print_info("Generating log statistics...")
         stats = self.log_loader.get_log_statistics(logs)
         display_log_statistics(stats)
+    
+    def _estimate_token_usage(self, logs: list) -> None:
+        """Estimate and display token usage for AI analysis."""
+        print_info("Estimating token usage for AI analysis...")
+        estimate = estimate_token_usage(logs, include_full_json=False)
+        display_token_estimate(estimate)
+        
+        # Ask user if they want to continue if optimization is needed
+        if estimate.get('optimization_needed', False):
+            print_info("Large log file detected. Optimization will be applied automatically.")
     
     def _analyze_logs(self, logs: list) -> Optional[str]:
         """Perform AI analysis on logs."""

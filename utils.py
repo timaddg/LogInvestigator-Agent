@@ -9,6 +9,7 @@ from rich.console import Console
 from rich.table import Table
 from rich.panel import Panel
 from rich.text import Text
+import json
 
 console = Console()
 
@@ -146,4 +147,95 @@ def get_file_size(file_path: str) -> str:
         else:
             return f"{size_bytes / (1024 * 1024):.1f}MB"
     except OSError:
-        return "Unknown" 
+        return "Unknown"
+
+
+def estimate_token_usage(logs: list, include_full_json: bool = False) -> dict:
+    """
+    Estimate token usage for log analysis.
+    
+    Args:
+        logs: List of log entries
+        include_full_json: Whether to include full JSON in estimation
+    
+    Returns:
+        Dictionary with token estimates and recommendations
+    """
+    try:
+        total_logs = len(logs)
+        
+        # Basic prompt tokens (analysis instructions)
+        base_prompt_tokens = 200
+        
+        # Estimate log data tokens
+        if include_full_json:
+            # Full JSON representation
+            json_data = json.dumps(logs, indent=2)
+            log_tokens = len(json_data.split()) * 1.3
+        else:
+            # Compressed representation
+            compressed_logs = []
+            for log in logs[:100]:  # Sample first 100 for estimation
+                compressed = {
+                    'timestamp': log.get('timestamp', '')[:19],
+                    'level': log.get('level', 'INFO'),
+                    'message': log.get('message', '')[:100]
+                }
+                compressed_logs.append(compressed)
+            
+            sample_json = json.dumps(compressed_logs, indent=2)
+            sample_tokens = len(sample_json.split()) * 1.3
+            log_tokens = (sample_tokens / 100) * total_logs
+        
+        total_estimated_tokens = base_prompt_tokens + log_tokens
+        
+        # Recommendations
+        recommendations = []
+        if total_estimated_tokens > 30000:
+            recommendations.append("⚠️ High token usage detected")
+            recommendations.append("💡 Consider enabling log optimization")
+            recommendations.append("💡 Reduce sample size or truncate messages")
+        elif total_estimated_tokens > 15000:
+            recommendations.append("⚠️ Moderate token usage")
+            recommendations.append("💡 Consider optimization for large files")
+        else:
+            recommendations.append("✅ Token usage within safe limits")
+        
+        return {
+            'total_logs': total_logs,
+            'estimated_tokens': int(total_estimated_tokens),
+            'base_prompt_tokens': base_prompt_tokens,
+            'log_data_tokens': int(log_tokens),
+            'recommendations': recommendations,
+            'optimization_needed': total_estimated_tokens > 30000
+        }
+        
+    except Exception as e:
+        return {
+            'error': f"Failed to estimate token usage: {e}",
+            'total_logs': len(logs),
+            'estimated_tokens': 0
+        }
+
+
+def display_token_estimate(estimate: dict) -> None:
+    """Display token usage estimate in a formatted way."""
+    print("\n📊 TOKEN USAGE ESTIMATE:")
+    print("=" * 50)
+    print(f"Total Log Entries: {estimate.get('total_logs', 0):,}")
+    print(f"Estimated Tokens: {estimate.get('estimated_tokens', 0):,}")
+    print(f"  ├─ Base Prompt: {estimate.get('base_prompt_tokens', 0):,}")
+    print(f"  └─ Log Data: {estimate.get('log_data_tokens', 0):,}")
+    
+    if 'recommendations' in estimate:
+        print("\n💡 RECOMMENDATIONS:")
+        for rec in estimate['recommendations']:
+            print(f"  {rec}")
+    
+    if estimate.get('optimization_needed', False):
+        print("\n🚨 OPTIMIZATION RECOMMENDED:")
+        print("  • Enable log optimization in .env file")
+        print("  • Reduce SAMPLE_SIZE setting")
+        print("  • Use smaller log files for analysis")
+    
+    print("=" * 50) 
