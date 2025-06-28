@@ -1,166 +1,236 @@
 # Log Investigator
 
-A Python-based log analysis and investigation tool designed to help developers and system administrators analyze, filter, and investigate log files efficiently.
+An AI-powered log analysis tool for cybersecurity and system administration. Upload your log files or download sample logs from online sources for instant AI-powered insights.
 
 ## Features
 
-- 📊 **Real Log Analysis**: Download and analyze real-world logs from various sources
-- 🔍 **AI-Powered Analysis**: Use Google Gemini AI for intelligent log analysis
-- 📈 **Performance Metrics**: Track request durations and performance patterns
-- 🚨 **Error Detection**: Identify and categorize errors and warnings
-- 🔐 **Security Monitoring**: Detect suspicious activities and security threats
-- 📝 **Comprehensive Logging**: Built-in logging with configurable levels
-- 🌐 **Internet Sources**: Access to 8+ real-world log sources
+- 🤖 **AI-Powered Analysis**: Uses Google Gemini API for intelligent log analysis
+- 📁 **File Upload**: Drag & drop interface for uploading log files
+- 🌐 **Online Sources**: Download and analyze logs from various online repositories
+- 📊 **Rich Statistics**: Detailed metrics and visualizations
+- 🎨 **Modern UI**: Beautiful React/Next.js frontend with dark theme
+- 🔧 **Modular Design**: Clean, maintainable codebase
 
-## Installation
+## Quick Start
 
-1. **Clone the repository**
-   ```bash
-   git clone https://github.com/timaddg/LogInvestigator-Agent.git
-   cd LogInvestigator-Agent
-   ```
+### Prerequisites
 
-2. **Create and activate virtual environment**
-   ```bash
-   python -m venv venv
-   source venv/bin/activate  # On Windows: venv\Scripts\activate
-   ```
+- Python 3.8+
+- Node.js 18+
+- Google Gemini API key
 
-3. **Install dependencies**
-   ```bash
-   pip install -r requirements.txt
-   ```
+### 1. Backend Setup (Flask)
 
-4. **Set up environment variables**
-   ```bash
-   cp env.example .env
-   # Edit .env file with your Gemini API key
-   ```
-
-## Usage
-
-### Basic Usage
-
-Run the application to automatically download and analyze web server logs:
 ```bash
-python main.py
+# Clone the repository
+git clone <your-repo-url>
+cd log-investigator
+
+# Create virtual environment
+python -m venv venv
+source venv/bin/activate  # On Windows: venv\Scripts\activate
+
+# Install dependencies
+pip install -r requirements.txt
+
+# Set up environment variables
+cp .env.example .env
+# Edit .env and add your GEMINI_API_KEY
+
+# Start the Flask backend
+python app.py
 ```
 
-### Advanced Usage
+The Flask backend will run on `http://localhost:8000`
 
-**List available log sources:**
+### 2. Frontend Setup (Next.js)
+
 ```bash
-python main.py --list-sources
+# Navigate to frontend directory
+cd frontend
+
+# Install dependencies
+npm install
+
+# Create environment file
+echo "FLASK_BACKEND_URL=http://localhost:8000" > .env.local
+
+# Start the development server
+npm run dev
 ```
 
-**Download and analyze specific logs:**
-```bash
-# Analyze Hadoop logs
-python main.py --source hadoop_logs
+The frontend will run on `http://localhost:4000`
 
-# Analyze Spark logs
-python main.py --source spark_logs
+### 3. Usage
 
-# Analyze Elasticsearch logs
-python main.py --source elasticsearch_logs
-```
+1. Open `http://localhost:4000` in your browser
+2. **Upload Logs**: Drag & drop your log files (JSON, LOG, TXT, CSV)
+3. **Download Samples**: Choose from available online log sources
+4. **View Analysis**: Get AI-powered insights and statistics
 
-**Download and convert to JSON:**
-```bash
-python main.py --convert web_server_logs
-```
-
-**Analyze a specific file:**
-```bash
-python main.py --file downloaded_logs/hadoop_logs.log
-```
-
-## Environment Variables
-
-Create a `.env` file with the following variables:
-
-```env
-# Log file path
-LOG_FILE=log_investigator.log
-
-# Log level (DEBUG, INFO, WARNING, ERROR, CRITICAL)
-LOG_LEVEL=INFO
-SAMPLE_LOGS_FILE=downloaded_logs/web_server_logs.log
-```
-
-## Available Log Sources
-
-### Web Servers
-- `web_server_logs` - Nginx web server logs
-- `github_logs` - Apache web server logs
-- `sample_json_logs` - JSON format nginx logs
-
-### Big Data & Cloud
-- `hadoop_logs` - Hadoop distributed computing
-- `spark_logs` - Apache Spark processing
-
-### Infrastructure
-- `zookeeper_logs` - Apache ZooKeeper
-- `hpc_logs` - High Performance Computing
-- `elasticsearch_logs` - Elasticsearch search engine
-
-## Project Structure
+## Architecture
 
 ```
 log-investigator/
-├── main.py              # Main application entry point
-├── config.py            # Configuration management
-├── log_loader.py        # Log file loading and validation
-├── log_downloader.py    # Download logs from internet sources
-├── ai_analyzer.py       # AI-powered log analysis
-├── utils.py             # Utilities and display formatting
-├── download_logs.py     # CLI for downloading logs
-├── requirements.txt     # Python dependencies
-├── .env                 # Environment variables (not tracked by git)
-├── .env.example         # Environment variables template
-├── .gitignore          # Git ignore rules
-└── README.md           # This file
+├── app.py                 # Flask backend server
+├── config.py             # Configuration management
+├── log_loader.py         # Log file loading and parsing
+├── ai_analyzer.py        # AI analysis with Gemini
+├── log_downloader.py     # Online log source management
+├── utils.py              # Utility functions
+├── requirements.txt      # Python dependencies
+├── frontend/             # Next.js frontend
+│   ├── src/
+│   │   ├── app/         # Next.js App Router
+│   │   │   └── types/       # TypeScript definitions
+│   │   └── package.json     # Node.js dependencies
+│   └── README.md            # This file
 ```
 
-## Dependencies
+## Configuration
 
-- **python-dotenv**: Environment variable management
-- **pandas**: Data analysis and manipulation
-- **rich**: Enhanced terminal output
-- **google-generativeai**: Google Gemini AI integration
-- **requests**: HTTP requests for downloading logs
+### Environment Variables
 
-## Getting Started
+Create a `.env` file in the root directory:
 
-1. **Get Gemini API Key**: Visit https://makersuite.google.com/app/apikey
-2. **Configure Environment**: Add your API key to `.env` file
-3. **Run Analysis**: `python main.py`
-4. **Explore Sources**: `python main.py --list-sources`
+```env
+# Required: Google Gemini API Key
+GEMINI_API_KEY=your_gemini_api_key_here
 
-## AI Analysis Features
+# Optional: Gemini Configuration
+GEMINI_MODEL=gemini-1.5-flash
+GEMINI_MAX_TOKENS=2048
+GEMINI_TEMPERATURE=0.3
 
-The AI analysis provides:
-- 🔍 **Quick Overview**: Summary of log analysis
-- 🚨 **Critical Issues**: Security and performance problems
-- ⚠️ **Warnings**: Important alerts and notifications
-- 📊 **Key Metrics**: Performance and usage statistics
-- 🎯 **Immediate Actions**: Specific recommendations
+# Optional: Flask Configuration
+SECRET_KEY=your-secret-key-here
+```
+
+### Frontend Configuration
+
+Create a `.env.local` file in the `frontend/` directory:
+
+```env
+FLASK_BACKEND_URL=http://localhost:8000
+```
+
+## API Endpoints
+
+### Flask Backend (`http://localhost:8000`)
+
+- `POST /upload` - Upload and analyze log files
+- `GET /sources` - Get available log sources
+- `POST /download/<source>` - Download and analyze sample logs
+- `GET /health` - Health check
+
+### Next.js Frontend (`http://localhost:4000`)
+
+- `/` - Main application interface
+- `/api/upload` - Proxy to Flask upload endpoint
+- `/api/sources` - Proxy to Flask sources endpoint
+- `/api/download/[source]` - Proxy to Flask download endpoint
+
+## Supported Log Formats
+
+- **JSON**: Structured log data
+- **LOG**: Standard log files
+- **TXT**: Plain text logs
+- **CSV**: Comma-separated values
+
+## Available Log Sources
+
+- **Web Server Logs**: Nginx, Apache access logs
+- **Big Data Logs**: Hadoop, Elasticsearch, Kafka
+- **Infrastructure Logs**: Docker, Kubernetes
+
+## Development
+
+### Backend Development
+
+```bash
+# Activate virtual environment
+source venv/bin/activate
+
+# Run with auto-reload
+python app.py
+
+# Run tests (if available)
+python -m pytest
+```
+
+### Frontend Development
+
+```bash
+cd frontend
+
+# Start development server
+npm run dev
+
+# Build for production
+npm run build
+
+# Run linting
+npm run lint
+```
+
+## Deployment
+
+### Backend Deployment
+
+The Flask app can be deployed to:
+- Heroku
+- Railway
+- DigitalOcean App Platform
+- AWS Elastic Beanstalk
+- Google Cloud Run
+
+### Frontend Deployment
+
+The Next.js app can be deployed to:
+- Vercel (recommended)
+- Netlify
+- Railway
+- DigitalOcean App Platform
+
+## Troubleshooting
+
+### Common Issues
+
+1. **GEMINI_API_KEY not found**
+   - Ensure your `.env` file exists and contains the API key
+   - Verify the key is valid and has proper permissions
+
+2. **Frontend can't connect to backend**
+   - Check that Flask backend is running on port 8000
+   - Verify `FLASK_BACKEND_URL` in frontend `.env.local`
+
+3. **File upload fails**
+   - Check file size (max 50MB)
+   - Verify file format is supported
+   - Ensure upload directory has write permissions
+
+4. **CORS errors**
+   - Backend has CORS enabled by default
+   - Check that frontend URL is allowed
 
 ## Contributing
 
 1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
+2. Create a feature branch
+3. Make your changes
+4. Add tests if applicable
+5. Submit a pull request
+
+## License
+
+MIT License - see LICENSE file for details.
 
 ## Support
 
-If you encounter any issues or have questions, please open an issue on GitHub.
-
----
-
-**Note**: This tool downloads real-world logs from open source repositories for educational and analysis purposes. All logs are anonymized and free to use.
+For issues and questions:
+- Check the troubleshooting section
+- Review the configuration
+- Open an issue on GitHub
 
 
 

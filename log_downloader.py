@@ -22,24 +22,79 @@ class LogDownloader:
             'User-Agent': 'LogInvestigator/1.0'
         })
     
-    def get_available_sources(self) -> Dict[str, str]:
-        """Get list of available log file sources."""
-        return {
-            "sample_json_logs": "https://raw.githubusercontent.com/elastic/examples/master/Common%20Data%20Formats/nginx_json_logs/nginx_json_logs"
-        }
+    def get_available_sources(self) -> List[Dict[str, str]]:
+        """Get list of available log file sources with detailed information."""
+        return [
+            {
+                "name": "sample_json_logs",
+                "description": "Sample JSON-formatted web server logs for testing and analysis",
+                "category": "Web Server",
+                "url": "https://raw.githubusercontent.com/elastic/examples/master/Common%20Data%20Formats/nginx_json_logs/nginx_json_logs"
+            },
+            {
+                "name": "nginx_access_logs",
+                "description": "Nginx access logs with HTTP request data and status codes",
+                "category": "Web Server",
+                "url": "https://raw.githubusercontent.com/elastic/examples/master/Common%20Data%20Formats/nginx_logs/nginx_logs"
+            },
+            {
+                "name": "apache_access_logs",
+                "description": "Apache web server access logs with detailed request information",
+                "category": "Web Server",
+                "url": "https://raw.githubusercontent.com/elastic/examples/master/Common%20Data%20Formats/apache_logs/apache_logs"
+            },
+            {
+                "name": "hadoop_logs",
+                "description": "Hadoop distributed computing framework logs",
+                "category": "Big Data",
+                "url": "https://raw.githubusercontent.com/elastic/examples/master/Common%20Data%20Formats/hadoop_logs/hadoop_logs"
+            },
+            {
+                "name": "elasticsearch_logs",
+                "description": "Elasticsearch search engine logs with cluster and index information",
+                "category": "Big Data",
+                "url": "https://raw.githubusercontent.com/elastic/examples/master/Common%20Data%20Formats/elasticsearch_logs/elasticsearch_logs"
+            },
+            {
+                "name": "kafka_logs",
+                "description": "Apache Kafka distributed streaming platform logs",
+                "category": "Big Data",
+                "url": "https://raw.githubusercontent.com/elastic/examples/master/Common%20Data%20Formats/kafka_logs/kafka_logs"
+            },
+            {
+                "name": "docker_logs",
+                "description": "Docker container logs with container lifecycle events",
+                "category": "Infrastructure",
+                "url": "https://raw.githubusercontent.com/elastic/examples/master/Common%20Data%20Formats/docker_logs/docker_logs"
+            },
+            {
+                "name": "kubernetes_logs",
+                "description": "Kubernetes cluster logs with pod and service information",
+                "category": "Infrastructure",
+                "url": "https://raw.githubusercontent.com/elastic/examples/master/Common%20Data%20Formats/kubernetes_logs/kubernetes_logs"
+            }
+        ]
+    
+    def get_source_url(self, source_name: str) -> Optional[str]:
+        """Get the URL for a specific source."""
+        sources = self.get_available_sources()
+        for source in sources:
+            if source["name"] == source_name:
+                return source["url"]
+        return None
     
     def download_logs(self, source_name: str, output_file: str = None) -> Optional[str]:
         """Download logs from a specific source."""
-        sources = self.get_available_sources()
+        url = self.get_source_url(source_name)
         
-        if source_name not in sources:
+        if not url:
             print_error(f"Unknown source: {source_name}")
             print_info("Available sources:")
-            for name in sources.keys():
-                print(f"  - {name}")
+            sources = self.get_available_sources()
+            for source in sources:
+                print(f"  - {source['name']}: {source['description']}")
             return None
         
-        url = sources[source_name]
         output_file = output_file or f"{source_name}.log"
         
         try:
