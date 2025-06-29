@@ -80,7 +80,83 @@ export default function AnalysisResults({ data }: AnalysisResultsProps) {
               <h3 className="text-lg font-semibold text-white mb-4">AI Insights</h3>
               <div className="prose prose-invert max-w-none">
                 <div className="whitespace-pre-wrap text-gray-200 leading-relaxed">
-                  {data.analysis}
+                  {data.analysis.split('\n').map((line, index) => {
+                    // Handle severity headers with special styling
+                    if (line.startsWith('## CRITICAL SEVERITY')) {
+                      return (
+                        <div key={index} className="mt-6 mb-3">
+                          <h4 className="text-xl font-bold text-red-400 border-b border-red-500/30 pb-2">
+                            {line.replace('## ', '')}
+                          </h4>
+                        </div>
+                      );
+                    }
+                    if (line.startsWith('## HIGH SEVERITY')) {
+                      return (
+                        <div key={index} className="mt-6 mb-3">
+                          <h4 className="text-xl font-bold text-orange-400 border-b border-orange-500/30 pb-2">
+                            {line.replace('## ', '')}
+                          </h4>
+                        </div>
+                      );
+                    }
+                    if (line.startsWith('## MEDIUM SEVERITY')) {
+                      return (
+                        <div key={index} className="mt-6 mb-3">
+                          <h4 className="text-xl font-bold text-yellow-400 border-b border-yellow-500/30 pb-2">
+                            {line.replace('## ', '')}
+                          </h4>
+                        </div>
+                      );
+                    }
+                    if (line.startsWith('## LOW SEVERITY')) {
+                      return (
+                        <div key={index} className="mt-6 mb-3">
+                          <h4 className="text-xl font-bold text-blue-400 border-b border-blue-500/30 pb-2">
+                            {line.replace('## ', '')}
+                          </h4>
+                        </div>
+                      );
+                    }
+                    if (line.startsWith('## OVERVIEW')) {
+                      return (
+                        <div key={index} className="mt-6 mb-3">
+                          <h4 className="text-xl font-bold text-green-400 border-b border-green-500/30 pb-2">
+                            {line.replace('## ', '')}
+                          </h4>
+                        </div>
+                      );
+                    }
+                    if (line.startsWith('## KEY METRICS')) {
+                      return (
+                        <div key={index} className="mt-6 mb-3">
+                          <h4 className="text-xl font-bold text-purple-400 border-b border-purple-500/30 pb-2">
+                            {line.replace('## ', '')}
+                          </h4>
+                        </div>
+                      );
+                    }
+                    if (line.startsWith('## RECOMMENDED ACTIONS')) {
+                      return (
+                        <div key={index} className="mt-6 mb-3">
+                          <h4 className="text-xl font-bold text-cyan-400 border-b border-cyan-500/30 pb-2">
+                            {line.replace('## ', '')}
+                          </h4>
+                        </div>
+                      );
+                    }
+                    // Handle bullet points with better styling
+                    if (line.trim().startsWith('- ')) {
+                      return (
+                        <div key={index} className="ml-4 mb-2 flex items-start">
+                          <span className="text-gray-400 mr-2 mt-1">•</span>
+                          <span className="text-gray-200">{line.trim().substring(2)}</span>
+                        </div>
+                      );
+                    }
+                    // Handle regular text
+                    return <div key={index}>{line}</div>;
+                  })}
                 </div>
               </div>
             </div>

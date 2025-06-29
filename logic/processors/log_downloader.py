@@ -313,7 +313,7 @@ class LogDownloader:
         print()
         
         for source in sources:
-            print(f"  📁 {source['name']}")
+            print(f"  {source['name']}")
             print(f"     Description: {source['description']}")
             print(f"     Category: {source['category']}")
             print(f"     URL: {source['url']}")

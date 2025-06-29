@@ -16,28 +16,28 @@ console = Console()
 
 def print_header(title: str) -> None:
     """Print a formatted header."""
-    console.print(f"\n🔍 {title}", style="bold blue")
+    console.print(f"\n{title}", style="bold blue")
     console.print("=" * 60, style="blue")
 
 
 def print_success(message: str) -> None:
     """Print a success message."""
-    console.print(f"✅ {message}", style="bold green")
+    console.print(f"{message}", style="bold green")
 
 
 def print_error(message: str) -> None:
     """Print an error message."""
-    console.print(f"❌ {message}", style="bold red")
+    console.print(f"{message}", style="bold red")
 
 
 def print_warning(message: str) -> None:
     """Print a warning message."""
-    console.print(f"⚠️ {message}", style="bold yellow")
+    console.print(f"{message}", style="bold yellow")
 
 
 def print_info(message: str) -> None:
     """Print an info message."""
-    console.print(f"ℹ️ {message}", style="bold cyan")
+    console.print(f"{message}", style="bold cyan")
 
 
 def display_log_statistics(stats: Dict[str, Any]) -> None:
@@ -192,14 +192,14 @@ def estimate_token_usage(logs: list, include_full_json: bool = False) -> dict:
         # Recommendations
         recommendations = []
         if total_estimated_tokens > 30000:
-            recommendations.append("⚠️ High token usage detected")
-            recommendations.append("💡 Consider enabling log optimization")
-            recommendations.append("💡 Reduce sample size or truncate messages")
+            recommendations.append("High token usage detected")
+            recommendations.append("Consider enabling log optimization")
+            recommendations.append("Reduce sample size or truncate messages")
         elif total_estimated_tokens > 15000:
-            recommendations.append("⚠️ Moderate token usage")
-            recommendations.append("💡 Consider optimization for large files")
+            recommendations.append("Moderate token usage")
+            recommendations.append("Consider optimization for large files")
         else:
-            recommendations.append("✅ Token usage within safe limits")
+            recommendations.append("Token usage within safe limits")
         
         return {
             'total_logs': total_logs,
@@ -220,7 +220,7 @@ def estimate_token_usage(logs: list, include_full_json: bool = False) -> dict:
 
 def display_token_estimate(estimate: dict) -> None:
     """Display token usage estimate in a formatted way."""
-    print("\n📊 TOKEN USAGE ESTIMATE:")
+    print("\nTOKEN USAGE ESTIMATE:")
     print("=" * 50)
     print(f"Total Log Entries: {estimate.get('total_logs', 0):,}")
     print(f"Estimated Tokens: {estimate.get('estimated_tokens', 0):,}")
@@ -228,12 +228,12 @@ def display_token_estimate(estimate: dict) -> None:
     print(f"  └─ Log Data: {estimate.get('log_data_tokens', 0):,}")
     
     if 'recommendations' in estimate:
-        print("\n💡 RECOMMENDATIONS:")
+        print("\nRECOMMENDATIONS:")
         for rec in estimate['recommendations']:
             print(f"  {rec}")
     
     if estimate.get('optimization_needed', False):
-        print("\n🚨 OPTIMIZATION RECOMMENDED:")
+        print("\nOPTIMIZATION RECOMMENDED:")
         print("  • Enable log optimization in .env file")
         print("  • Reduce SAMPLE_SIZE setting")
         print("  • Use smaller log files for analysis")

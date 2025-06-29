@@ -42,35 +42,35 @@ class AIAnalyzer:
                 total_original_logs = len(logs)
             
             if not optimized_logs:
-                return "❌ No valid logs to analyze after optimization."
+                return "No valid logs to analyze after optimization."
             
             prompt = self._create_optimized_analysis_prompt(optimized_logs, total_original_logs)
             if not prompt:
                 return None
             
-            print(f"🤖 Sending {len(optimized_logs)} log entries to Gemini...")
+            print(f"Sending {len(optimized_logs)} log entries to Gemini...")
             if self.enable_optimization and len(logs) > self.max_log_entries:
-                print(f"📊 Original logs: {len(logs)}, Optimized: {len(optimized_logs)}")
+                print(f"Original logs: {len(logs)}, Optimized: {len(optimized_logs)}")
             
             response = self._call_gemini_api(prompt)
             if not response:
                 return None
             
-            print("✅ AI analysis completed successfully")
+            print("AI analysis completed successfully")
             return response
         
         except Exception as e:
-            print(f"❌ DEBUG: Full error details: {type(e).__name__}: {str(e)}")
+            print(f"DEBUG: Full error details: {type(e).__name__}: {str(e)}")
             if "api_key" in str(e).lower() or "authentication" in str(e).lower():
-                print("❌ Authentication error: Invalid API key")
+                print("Authentication error: Invalid API key")
                 print("Please check your GEMINI_API_KEY in the .env file")
             elif "quota" in str(e).lower() or "rate" in str(e).lower():
-                print("❌ Rate limit exceeded: Please wait before trying again")
+                print("Rate limit exceeded: Please wait before trying again")
             elif "model" in str(e).lower():
-                print(f"❌ Model error: {e}")
+                print(f"Model error: {e}")
                 print(f"Please ensure the model '{config.gemini_model}' is available")
             else:
-                print(f"❌ Unexpected error during AI analysis: {e}")
+                print(f"Unexpected error during AI analysis: {e}")
             return None
     
     def _optimize_logs_for_analysis(self, logs: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
@@ -79,7 +79,7 @@ class AIAnalyzer:
             return []
         
         total_logs = len(logs)
-        print(f"📊 Optimizing {total_logs} log entries...")
+        print(f"Optimizing {total_logs} log entries...")
         
         # Strategy 1: Prioritize errors and warnings
         error_logs = [log for log in logs if log.get('level') == 'ERROR']
@@ -112,7 +112,7 @@ class AIAnalyzer:
             if compressed_log:
                 compressed_logs.append(compressed_log)
         
-        print(f"✅ Optimization complete: {len(compressed_logs)} entries selected")
+        print(f"Optimization complete: {len(compressed_logs)} entries selected")
         return compressed_logs
     
     def _compress_log_entry(self, log: Dict[str, Any]) -> Optional[Dict[str, Any]]:
@@ -137,7 +137,7 @@ class AIAnalyzer:
             
             return compressed
         except Exception as e:
-            print(f"⚠️ Error compressing log entry: {e}")
+            print(f"Error compressing log entry: {e}")
             return None
     
     def _truncate_message(self, message: str, max_length: int) -> str:
@@ -189,28 +189,34 @@ You are a cybersecurity analyst. Analyze these logs and provide a CONCISE summar
 LOG SAMPLE:
 {log_summary}
 
-Provide a BRIEF analysis in this exact format:
+Provide a BRIEF analysis organized by severity in this exact format:
 
-## 🔍 QUICK OVERVIEW
+## CRITICAL SEVERITY
+- [List critical security/performance issues, max 3 items]
+
+## HIGH SEVERITY  
+- [List high priority issues, max 3 items]
+
+## MEDIUM SEVERITY
+- [List moderate issues, max 3 items]
+
+## LOW SEVERITY
+- [List minor issues, max 3 items]
+
+## OVERVIEW
 [2-3 sentences summarizing the overall situation]
 
-## 🚨 CRITICAL ISSUES
-- [List only critical security/performance issues, max 3 items]
-
-## ⚠️ WARNINGS
-- [List important warnings, max 3 items]
-
-## 📊 KEY METRICS
+## KEY METRICS
 - [2-3 key performance metrics]
 
-## 🎯 IMMEDIATE ACTIONS
+## RECOMMENDED ACTIONS
 - [2-3 specific, actionable steps]
 
-Keep each section brief and actionable. Use bullet points. Focus on the most important findings only.
+Keep each section brief and actionable. Use bullet points. Focus on the most important findings only. If a severity level has no issues, omit that section entirely.
 """
             return prompt
         except Exception as e:
-            print(f"❌ Error creating analysis prompt: {e}")
+            print(f"Error creating analysis prompt: {e}")
             return None
     
     def _create_log_summary(self, logs: List[Dict[str, Any]]) -> str:
@@ -249,10 +255,10 @@ Keep each section brief and actionable. Use bullet points. Focus on the most imp
         try:
             # Estimate token count (rough approximation)
             estimated_tokens = len(prompt.split()) * 1.3  # Rough token estimation
-            print(f"📝 Estimated tokens: ~{int(estimated_tokens)}")
+            print(f"Estimated tokens: ~{int(estimated_tokens)}")
             
             if estimated_tokens > self.max_input_tokens:
-                print(f"⚠️ Warning: Estimated tokens ({int(estimated_tokens)}) exceed recommended limit ({self.max_input_tokens})")
+                print(f"Warning: Estimated tokens ({int(estimated_tokens)}) exceed recommended limit ({self.max_input_tokens})")
             
             response = self.model.generate_content(
                 prompt,
@@ -277,7 +283,7 @@ Keep each section brief and actionable. Use bullet points. Focus on the most imp
             optimized_logs = self._optimize_logs_for_analysis(logs)
             
             if not optimized_logs:
-                return f"❌ No logs available for {issue_type} analysis."
+                return f"No logs available for {issue_type} analysis."
             
             prompt = f"""
 You are a cybersecurity analyst. Focus on {issue_type} in these logs.
@@ -287,16 +293,16 @@ LOG SAMPLE:
 
 Provide a CONCISE analysis in this format:
 
-## 🎯 {issue_type.upper()} ANALYSIS
+## {issue_type.upper()} ANALYSIS
 [2-3 sentences about the issue]
 
-## 🚨 SEVERITY
+## SEVERITY
 [Low/Medium/High] - [Brief reason]
 
-## 🔍 ROOT CAUSE
+## ROOT CAUSE
 [1-2 sentences identifying the cause]
 
-## ✅ SOLUTION
+## SOLUTION
 [2-3 specific, actionable steps]
 
 Keep it brief and actionable. Use bullet points where appropriate.
@@ -305,5 +311,5 @@ Keep it brief and actionable. Use bullet points where appropriate.
             return self._call_gemini_api(prompt)
         
         except Exception as e:
-            print(f"❌ Error in specific issue analysis: {e}")
+            print(f"Error in specific issue analysis: {e}")
             return None 

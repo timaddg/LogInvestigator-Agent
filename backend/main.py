@@ -12,6 +12,7 @@ from typing import Optional
 # Import our modules
 import os
 sys.path.append(os.path.dirname(__file__))
+sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
 
 from config.config import config
 from logic.processors.log_loader import LogLoader
