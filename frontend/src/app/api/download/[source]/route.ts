@@ -4,10 +4,10 @@ const FLASK_BACKEND_URL = process.env.FLASK_BACKEND_URL || 'http://localhost:800
 
 export async function POST(
   request: NextRequest,
-  { params }: { params: { source: string } }
+  { params }: { params: Promise<{ source: string }> }
 ) {
   try {
-    const { source } = params;
+    const { source } = await params;
 
     const response = await fetch(`${FLASK_BACKEND_URL}/download/${source}`, {
       method: 'POST',

@@ -11,6 +11,7 @@ import re
 import sys
 sys.path.append(os.path.join(os.path.dirname(__file__), '..', '..', 'backend'))
 
+from config.config import config
 from utils.utils import print_info, print_success, print_error, print_warning
 
 
@@ -130,11 +131,20 @@ class LogLoader:
             'services': {},
             'error_count': 0,
             'warning_count': 0,
+            'unique_ips': 0,
+            'unique_user_agents': 0,
+            'status_codes': {},
+            'top_endpoints': [],
             'time_range': {
-                'earliest': None,
-                'latest': None
+                'start': None,
+                'end': None
             }
         }
+        
+        # Collect unique IPs and user agents
+        unique_ips = set()
+        unique_user_agents = set()
+        endpoint_counts = {}
         
         for log in logs:
             # Count log levels
@@ -151,12 +161,48 @@ class LogLoader:
             elif level == 'WARN':
                 stats['warning_count'] += 1
             
+            # Collect unique IPs
+            ip = log.get('ip_address') or log.get('remote_ip')
+            if ip:
+                unique_ips.add(ip)
+            
+            # Collect unique user agents
+            user_agent = log.get('user_agent') or log.get('User-Agent')
+            if user_agent:
+                unique_user_agents.add(user_agent)
+            
+            # Count status codes
+            status_code = log.get('status_code') or log.get('response')
+            if status_code:
+                if isinstance(status_code, str):
+                    status_code = status_code.split()[0] if ' ' in status_code else status_code
+                stats['status_codes'][str(status_code)] = stats['status_codes'].get(str(status_code), 0) + 1
+            
+            # Count endpoints
+            endpoint = log.get('request_path') or log.get('endpoint') or log.get('request')
+            if endpoint:
+                if isinstance(endpoint, str):
+                    # Extract path from full request if needed
+                    if endpoint.startswith('GET ') or endpoint.startswith('POST '):
+                        endpoint = endpoint.split(' ')[1] if len(endpoint.split(' ')) > 1 else endpoint
+                    endpoint_counts[endpoint] = endpoint_counts.get(endpoint, 0) + 1
+            
             # Track time range
             timestamp = log.get('timestamp')
             if timestamp:
-                if not stats['time_range']['earliest'] or timestamp < stats['time_range']['earliest']:
-                    stats['time_range']['earliest'] = timestamp
-                if not stats['time_range']['latest'] or timestamp > stats['time_range']['latest']:
-                    stats['time_range']['latest'] = timestamp
+                if not stats['time_range']['start'] or timestamp < stats['time_range']['start']:
+                    stats['time_range']['start'] = timestamp
+                if not stats['time_range']['end'] or timestamp > stats['time_range']['end']:
+                    stats['time_range']['end'] = timestamp
+        
+        # Set unique counts
+        stats['unique_ips'] = len(unique_ips)
+        stats['unique_user_agents'] = len(unique_user_agents)
+        
+        # Convert endpoint counts to sorted list
+        stats['top_endpoints'] = [
+            {'endpoint': endpoint, 'count': count}
+            for endpoint, count in sorted(endpoint_counts.items(), key=lambda x: x[1], reverse=True)
+        ]
         
         return stats 

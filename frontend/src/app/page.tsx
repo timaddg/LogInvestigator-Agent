@@ -26,7 +26,7 @@ export default function Home() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900">
+    <div className="min-h-screen bg-black">
       <div className="container mx-auto px-4 py-8">
         {/* Header */}
         <div className="text-center mb-12">
@@ -42,7 +42,7 @@ export default function Home() {
         {/* Main Content */}
         <div className="grid lg:grid-cols-2 gap-8 mb-8">
           {/* File Upload Section */}
-          <div className="bg-white/10 backdrop-blur-lg rounded-2xl p-8 border border-white/20">
+          <div className="bg-gray-900 rounded-2xl p-8 border border-gray-700">
             <h2 className="text-2xl font-semibold text-white mb-6">
               Upload Log File
             </h2>
@@ -54,7 +54,7 @@ export default function Home() {
           </div>
 
           {/* Log Sources Section */}
-          <div className="bg-white/10 backdrop-blur-lg rounded-2xl p-8 border border-white/20">
+          <div className="bg-gray-900 rounded-2xl p-8 border border-gray-700">
             <h2 className="text-2xl font-semibold text-white mb-6">
               Download Sample Logs
             </h2>
@@ -68,7 +68,7 @@ export default function Home() {
 
         {/* Loading State */}
         {isLoading && (
-          <div className="bg-white/10 backdrop-blur-lg rounded-2xl p-8 border border-white/20 mb-8">
+          <div className="bg-gray-900 rounded-2xl p-8 border border-gray-700 mb-8">
             <div className="flex items-center justify-center space-x-4">
               <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-white"></div>
               <p className="text-white text-lg">Analyzing logs with AI...</p>
@@ -78,7 +78,7 @@ export default function Home() {
 
         {/* Error Display */}
         {error && (
-          <div className="bg-red-500/20 backdrop-blur-lg rounded-2xl p-8 border border-red-500/30 mb-8">
+          <div className="bg-red-900/50 rounded-2xl p-8 border border-red-700 mb-8">
             <div className="flex items-center space-x-3">
               <div className="flex-shrink-0">
                 <svg className="h-6 w-6 text-red-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">

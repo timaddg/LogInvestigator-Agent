@@ -24,9 +24,9 @@ export default function AnalysisResults({ data }: AnalysisResultsProps) {
   };
 
   return (
-    <div className="bg-white/10 backdrop-blur-lg rounded-2xl border border-white/20 overflow-hidden">
+    <div className="bg-gray-900 rounded-2xl border border-gray-700 overflow-hidden">
       {/* Header */}
-      <div className="bg-white/5 px-8 py-6 border-b border-white/10">
+      <div className="bg-gray-800 px-8 py-6 border-b border-gray-700">
         <div className="flex items-center justify-between">
           <div>
             <h2 className="text-2xl font-semibold text-white">Analysis Results</h2>
@@ -45,14 +45,14 @@ export default function AnalysisResults({ data }: AnalysisResultsProps) {
       </div>
 
       {/* Tabs */}
-      <div className="flex border-b border-white/10">
+      <div className="flex border-b border-gray-700">
         <button
           onClick={() => setActiveTab('analysis')}
           className={`
             flex-1 px-6 py-4 text-sm font-medium transition-colors
             ${activeTab === 'analysis'
-              ? 'text-purple-400 border-b-2 border-purple-400 bg-white/5'
-              : 'text-gray-400 hover:text-white hover:bg-white/5'
+              ? 'text-purple-400 border-b-2 border-purple-400 bg-gray-800'
+              : 'text-gray-400 hover:text-white hover:bg-gray-800'
             }
           `}
         >
@@ -63,8 +63,8 @@ export default function AnalysisResults({ data }: AnalysisResultsProps) {
           className={`
             flex-1 px-6 py-4 text-sm font-medium transition-colors
             ${activeTab === 'statistics'
-              ? 'text-purple-400 border-b-2 border-purple-400 bg-white/5'
-              : 'text-gray-400 hover:text-white hover:bg-white/5'
+              ? 'text-purple-400 border-b-2 border-purple-400 bg-gray-800'
+              : 'text-gray-400 hover:text-white hover:bg-gray-800'
             }
           `}
         >
@@ -76,7 +76,7 @@ export default function AnalysisResults({ data }: AnalysisResultsProps) {
       <div className="p-8">
         {activeTab === 'analysis' && (
           <div className="space-y-6">
-            <div className="bg-gradient-to-r from-purple-500/10 to-blue-500/10 border border-purple-500/20 rounded-lg p-6">
+            <div className="bg-gray-800 border border-gray-600 rounded-lg p-6">
               <h3 className="text-lg font-semibold text-white mb-4">AI Insights</h3>
               <div className="prose prose-invert max-w-none">
                 <div className="whitespace-pre-wrap text-gray-200 leading-relaxed">
@@ -91,7 +91,7 @@ export default function AnalysisResults({ data }: AnalysisResultsProps) {
           <div className="space-y-8">
             {/* Overview Cards */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              <div className="bg-white/5 border border-white/10 rounded-lg p-6">
+              <div className="bg-gray-800 border border-gray-700 rounded-lg p-6">
                 <div className="flex items-center">
                   <div className="flex-shrink-0">
                     <div className="w-8 h-8 bg-blue-500/20 rounded-lg flex items-center justify-center">
@@ -109,7 +109,7 @@ export default function AnalysisResults({ data }: AnalysisResultsProps) {
                 </div>
               </div>
 
-              <div className="bg-white/5 border border-white/10 rounded-lg p-6">
+              <div className="bg-gray-800 border border-gray-700 rounded-lg p-6">
                 <div className="flex items-center">
                   <div className="flex-shrink-0">
                     <div className="w-8 h-8 bg-green-500/20 rounded-lg flex items-center justify-center">
@@ -127,7 +127,7 @@ export default function AnalysisResults({ data }: AnalysisResultsProps) {
                 </div>
               </div>
 
-              <div className="bg-white/5 border border-white/10 rounded-lg p-6">
+              <div className="bg-gray-800 border border-gray-700 rounded-lg p-6">
                 <div className="flex items-center">
                   <div className="flex-shrink-0">
                     <div className="w-8 h-8 bg-purple-500/20 rounded-lg flex items-center justify-center">
@@ -147,7 +147,7 @@ export default function AnalysisResults({ data }: AnalysisResultsProps) {
             </div>
 
             {/* Status Codes */}
-            <div className="bg-white/5 border border-white/10 rounded-lg p-6">
+            <div className="bg-gray-800 border border-gray-700 rounded-lg p-6">
               <h3 className="text-lg font-semibold text-white mb-4">HTTP Status Codes</h3>
               <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
                 {Object.entries(data.statistics.status_codes)
@@ -167,7 +167,7 @@ export default function AnalysisResults({ data }: AnalysisResultsProps) {
             </div>
 
             {/* Top Endpoints */}
-            <div className="bg-white/5 border border-white/10 rounded-lg p-6">
+            <div className="bg-gray-800 border border-gray-700 rounded-lg p-6">
               <h3 className="text-lg font-semibold text-white mb-4">Top Endpoints</h3>
               <div className="space-y-3">
                 {data.statistics.top_endpoints.slice(0, 10).map((endpoint, index) => (
@@ -190,7 +190,7 @@ export default function AnalysisResults({ data }: AnalysisResultsProps) {
 
             {/* Time Range */}
             {data.statistics.time_range.start && data.statistics.time_range.end && (
-              <div className="bg-white/5 border border-white/10 rounded-lg p-6">
+              <div className="bg-gray-800 border border-gray-700 rounded-lg p-6">
                 <h3 className="text-lg font-semibold text-white mb-4">Time Range</h3>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div>

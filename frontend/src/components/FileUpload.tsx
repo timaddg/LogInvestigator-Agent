@@ -62,8 +62,8 @@ export default function FileUpload({ onAnalysisComplete, onError, onLoading }: F
         className={`
           border-2 border-dashed rounded-xl p-8 text-center cursor-pointer transition-all duration-200
           ${isDragActive 
-            ? 'border-purple-400 bg-purple-50/10' 
-            : 'border-gray-300 hover:border-purple-300 hover:bg-gray-50/5'
+            ? 'border-purple-400 bg-gray-800' 
+            : 'border-gray-600 hover:border-purple-400 hover:bg-gray-800'
           }
           ${isUploading ? 'opacity-50 cursor-not-allowed' : ''}
         `}
@@ -98,7 +98,7 @@ export default function FileUpload({ onAnalysisComplete, onError, onLoading }: F
         )}
       </div>
 
-      <div className="bg-blue-500/10 border border-blue-500/20 rounded-lg p-4">
+      <div className="bg-gray-800 border border-gray-600 rounded-lg p-4">
         <div className="flex items-start space-x-3">
           <div className="flex-shrink-0">
             <svg className="h-5 w-5 text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">

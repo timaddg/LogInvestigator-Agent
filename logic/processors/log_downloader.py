@@ -25,6 +25,12 @@ class LogDownloader:
             'User-Agent': 'LogInvestigator/1.0'
         })
     
+    @property
+    def sources(self) -> Dict[str, Dict[str, str]]:
+        """Get sources as a dictionary with source names as keys."""
+        sources_list = self.get_available_sources()
+        return {source["name"]: source for source in sources_list}
+    
     def get_available_sources(self) -> List[Dict[str, str]]:
         """Get list of available log file sources with detailed information."""
         return [
@@ -88,20 +94,30 @@ class LogDownloader:
     
     def download_logs(self, source_name: str, output_file: Optional[str] = None) -> str:
         """
-        Download logs from a specific source.
+        Download logs from a specific source and convert to JSON format.
         
         Args:
             source_name: Name of the log source to download
             output_file: Optional output file path
             
         Returns:
-            Path to the downloaded file
+            Path to the downloaded and converted JSON file
         """
         if source_name not in self.sources:
             raise ValueError(f"Unknown source: {source_name}. Available sources: {list(self.sources.keys())}")
         
         source = self.sources[source_name]
-        output_file = output_file or f"{source_name}.json"
+        
+        # Create data/logs directory if it doesn't exist
+        output_dir = os.path.join(os.path.dirname(__file__), '..', '..', 'data', 'logs')
+        os.makedirs(output_dir, exist_ok=True)
+        
+        # Set default output file path (always save as JSON)
+        if output_file is None:
+            output_file = os.path.join(output_dir, f"{source_name}.json")
+        elif not os.path.isabs(output_file):
+            # If relative path, make it relative to the logs directory
+            output_file = os.path.join(output_dir, output_file)
         
         print_info(f"Downloading {source_name} logs...")
         
@@ -109,26 +125,44 @@ class LogDownloader:
             response = requests.get(source['url'], timeout=30)
             response.raise_for_status()
             
-            # Save the raw content
-            with open(output_file, 'w', encoding='utf-8') as f:
-                f.write(response.text)
+            # Convert the raw content to JSON format
+            print_info("Converting raw logs to JSON format...")
+            json_logs = self._convert_to_json(response.text, source_name)
             
-            print_success(f"Downloaded {source_name} logs to {output_file}")
+            # Save as JSON
+            with open(output_file, 'w', encoding='utf-8') as f:
+                json.dump(json_logs, f, indent=2)
+            
+            print_success(f"Downloaded and converted {source_name} logs to {output_file}")
             return output_file
             
         except requests.RequestException as e:
             print_error(f"Failed to download {source_name} logs: {e}")
+            # Try to generate sample logs as fallback
+            print_info("Generating sample logs as fallback...")
+            return self._generate_sample_logs(source_name, output_file)
+        except Exception as e:
+            print_error(f"Unexpected error downloading {source_name} logs: {e}")
             raise
     
     def download_and_convert_to_json(self, source_name: str, output_file: str = None) -> Optional[str]:
         """Download logs and convert to JSON format for analysis."""
-        raw_file = self.download_logs(source_name)
-        if not raw_file:
-            return None
-        
-        output_file = output_file or f"{source_name}_converted.json"
-        
         try:
+            raw_file = self.download_logs(source_name)
+            if not raw_file:
+                return None
+            
+            # Create data/logs directory if it doesn't exist
+            output_dir = os.path.join(os.path.dirname(__file__), '..', '..', 'data', 'logs')
+            os.makedirs(output_dir, exist_ok=True)
+            
+            # Set default output file path
+            if output_file is None:
+                output_file = os.path.join(output_dir, f"{source_name}_converted.json")
+            elif not os.path.isabs(output_file):
+                # If relative path, make it relative to the logs directory
+                output_file = os.path.join(output_dir, output_file)
+            
             print_info("Converting logs to JSON format...")
             
             # Read the raw log file
@@ -278,9 +312,11 @@ class LogDownloader:
         print_info("Available log sources:")
         print()
         
-        for name, url in sources.items():
-            print(f"  📁 {name}")
-            print(f"     URL: {url}")
+        for source in sources:
+            print(f"  📁 {source['name']}")
+            print(f"     Description: {source['description']}")
+            print(f"     Category: {source['category']}")
+            print(f"     URL: {source['url']}")
             print()
     
     def download_multiple_sources(self, source_names: List[str], output_dir: str = "downloaded_logs") -> List[str]:
@@ -323,7 +359,22 @@ class LogDownloader:
                 size = random.randint(100, 50000)
                 
                 log_line = f'{ip} - - [{timestamp.strftime("%d/%b/%Y:%H:%M:%S +0000")}] "{method} {path} HTTP/1.1" {status} {size}'
-                sample_logs.append(log_line)
+                
+                # Convert to JSON format
+                log_entry = {
+                    "timestamp": timestamp.isoformat(),
+                    "level": "INFO" if status < 400 else "WARN" if status < 500 else "ERROR",
+                    "service": "nginx",
+                    "message": log_line,
+                    "line_number": i + 1,
+                    "source": source_name,
+                    "ip_address": ip,
+                    "request_method": method,
+                    "request_path": path,
+                    "status_code": status,
+                    "response_size": size
+                }
+                sample_logs.append(log_entry)
                 
         elif "apache" in source_name.lower():
             # Generate Apache-style logs
@@ -341,7 +392,22 @@ class LogDownloader:
                 size = random.randint(50, 30000)
                 
                 log_line = f'{ip} - - [{timestamp.strftime("%d/%b/%Y:%H:%M:%S +0000")}] "{method} {path} HTTP/1.1" {status} {size}'
-                sample_logs.append(log_line)
+                
+                # Convert to JSON format
+                log_entry = {
+                    "timestamp": timestamp.isoformat(),
+                    "level": "INFO" if status < 400 else "WARN" if status < 500 else "ERROR",
+                    "service": "apache",
+                    "message": log_line,
+                    "line_number": i + 1,
+                    "source": source_name,
+                    "ip_address": ip,
+                    "request_method": method,
+                    "request_path": path,
+                    "status_code": status,
+                    "response_size": size
+                }
+                sample_logs.append(log_entry)
                 
         else:
             # Generate generic application logs
@@ -365,11 +431,21 @@ class LogDownloader:
                 message = random.choice(messages)
                 
                 log_line = f'{timestamp.strftime("%Y-%m-%d %H:%M:%S")} [{level}] {service}: {message}'
-                sample_logs.append(log_line)
+                
+                # Convert to JSON format
+                log_entry = {
+                    "timestamp": timestamp.isoformat(),
+                    "level": level,
+                    "service": service,
+                    "message": log_line,
+                    "line_number": i + 1,
+                    "source": source_name
+                }
+                sample_logs.append(log_entry)
         
-        # Save the generated logs
+        # Save the generated logs as JSON
         with open(output_file, 'w', encoding='utf-8') as f:
-            f.write('\n'.join(sample_logs))
+            json.dump(sample_logs, f, indent=2)
         
         print_success(f"Generated {len(sample_logs)} sample log entries in {output_file}")
         return output_file 
