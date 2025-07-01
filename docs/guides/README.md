@@ -98,7 +98,7 @@ Create a `.env` file in the root directory:
 GEMINI_API_KEY=your_gemini_api_key_here
 
 # Optional: Gemini Configuration
-GEMINI_MODEL=gemini-1.5-flash
+GEMINI_MODEL=gemini-2.5-pro
 GEMINI_MAX_TOKENS=2048
 GEMINI_TEMPERATURE=0.3
 

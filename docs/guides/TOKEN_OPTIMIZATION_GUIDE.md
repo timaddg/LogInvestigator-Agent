@@ -4,7 +4,7 @@ This guide helps you optimize log files to stay within the free Google Gemini AP
 
 ## 🎯 Token Limits Overview
 
-### Free Gemini API Limits
+### Free Gemini API Limits (Gemini 2.5 Pro)
 - **Input Tokens**: ~30,000 tokens per request
 - **Output Tokens**: ~2,000 tokens per response
 - **Rate Limits**: 15 requests per minute
@@ -107,7 +107,7 @@ MAX_LOG_ENTRIES=1000
 SAMPLE_SIZE=500
 
 # Gemini API settings
-GEMINI_MODEL=gemini-1.5-flash
+GEMINI_MODEL=gemini-2.5-pro
 GEMINI_MAX_TOKENS=2048
 GEMINI_TEMPERATURE=0.3
 ```

@@ -1,0 +1,802 @@
+[
+  {
+    "timestamp": "2025-06-29T16:58:29.638404",
+    "level": "INFO",
+    "service": "web-server",
+    "message": "2025-06-29 16:58:29 [INFO] web-server: File uploaded: document.pdf",
+    "line_number": 1,
+    "source": "kafka_logs"
+  },
+  {
+    "timestamp": "2025-06-29T17:03:29.638404",
+    "level": "INFO",
+    "service": "database",
+    "message": "2025-06-29 17:03:29 [INFO] database: Backup completed successfully",
+    "line_number": 2,
+    "source": "kafka_logs"
+  },
+  {
+    "timestamp": "2025-06-29T17:08:29.638404",
+    "level": "WARN",
+    "service": "database",
+    "message": "2025-06-29 17:08:29 [WARN] database: File uploaded: document.pdf",
+    "line_number": 3,
+    "source": "kafka_logs"
+  },
+  {
+    "timestamp": "2025-06-29T17:13:29.638404",
+    "level": "ERROR",
+    "service": "database",
+    "message": "2025-06-29 17:13:29 [ERROR] database: API rate limit exceeded",
+    "line_number": 4,
+    "source": "kafka_logs"
+  },
+  {
+    "timestamp": "2025-06-29T17:18:29.638404",
+    "level": "ERROR",
+    "service": "auth-service",
+    "message": "2025-06-29 17:18:29 [ERROR] auth-service: Cache miss for key: user_123",
+    "line_number": 5,
+    "source": "kafka_logs"
+  },
+  {
+    "timestamp": "2025-06-29T17:23:29.638404",
+    "level": "ERROR",
+    "service": "database",
+    "message": "2025-06-29 17:23:29 [ERROR] database: API rate limit exceeded",
+    "line_number": 6,
+    "source": "kafka_logs"
+  },
+  {
+    "timestamp": "2025-06-29T17:28:29.638404",
+    "level": "ERROR",
+    "service": "cache",
+    "message": "2025-06-29 17:28:29 [ERROR] cache: Database connection established",
+    "line_number": 7,
+    "source": "kafka_logs"
+  },
+  {
+    "timestamp": "2025-06-29T17:33:29.638404",
+    "level": "ERROR",
+    "service": "web-server",
+    "message": "2025-06-29 17:33:29 [ERROR] web-server: Memory usage: 75%",
+    "line_number": 8,
+    "source": "kafka_logs"
+  },
+  {
+    "timestamp": "2025-06-29T17:38:29.638404",
+    "level": "DEBUG",
+    "service": "auth-service",
+    "message": "2025-06-29 17:38:29 [DEBUG] auth-service: Authentication successful",
+    "line_number": 9,
+    "source": "kafka_logs"
+  },
+  {
+    "timestamp": "2025-06-29T17:43:29.638404",
+    "level": "ERROR",
+    "service": "cache",
+    "message": "2025-06-29 17:43:29 [ERROR] cache: API rate limit exceeded",
+    "line_number": 10,
+    "source": "kafka_logs"
+  },
+  {
+    "timestamp": "2025-06-29T17:48:29.638404",
+    "level": "INFO",
+    "service": "web-server",
+    "message": "2025-06-29 17:48:29 [INFO] web-server: Memory usage: 75%",
+    "line_number": 11,
+    "source": "kafka_logs"
+  },
+  {
+    "timestamp": "2025-06-29T17:53:29.638404",
+    "level": "ERROR",
+    "service": "auth-service",
+    "message": "2025-06-29 17:53:29 [ERROR] auth-service: Memory usage: 75%",
+    "line_number": 12,
+    "source": "kafka_logs"
+  },
+  {
+    "timestamp": "2025-06-29T17:58:29.638404",
+    "level": "WARN",
+    "service": "auth-service",
+    "message": "2025-06-29 17:58:29 [WARN] auth-service: Authentication successful",
+    "line_number": 13,
+    "source": "kafka_logs"
+  },
+  {
+    "timestamp": "2025-06-29T18:03:29.638404",
+    "level": "WARN",
+    "service": "web-server",
+    "message": "2025-06-29 18:03:29 [WARN] web-server: API rate limit exceeded",
+    "line_number": 14,
+    "source": "kafka_logs"
+  },
+  {
+    "timestamp": "2025-06-29T18:08:29.638404",
+    "level": "ERROR",
+    "service": "cache",
+    "message": "2025-06-29 18:08:29 [ERROR] cache: File uploaded: document.pdf",
+    "line_number": 15,
+    "source": "kafka_logs"
+  },
+  {
+    "timestamp": "2025-06-29T18:13:29.638404",
+    "level": "DEBUG",
+    "service": "auth-service",
+    "message": "2025-06-29 18:13:29 [DEBUG] auth-service: API rate limit exceeded",
+    "line_number": 16,
+    "source": "kafka_logs"
+  },
+  {
+    "timestamp": "2025-06-29T18:18:29.638404",
+    "level": "ERROR",
+    "service": "auth-service",
+    "message": "2025-06-29 18:18:29 [ERROR] auth-service: File uploaded: document.pdf",
+    "line_number": 17,
+    "source": "kafka_logs"
+  },
+  {
+    "timestamp": "2025-06-29T18:23:29.638404",
+    "level": "WARN",
+    "service": "database",
+    "message": "2025-06-29 18:23:29 [WARN] database: Database connection established",
+    "line_number": 18,
+    "source": "kafka_logs"
+  },
+  {
+    "timestamp": "2025-06-29T18:28:29.638404",
+    "level": "DEBUG",
+    "service": "database",
+    "message": "2025-06-29 18:28:29 [DEBUG] database: Authentication successful",
+    "line_number": 19,
+    "source": "kafka_logs"
+  },
+  {
+    "timestamp": "2025-06-29T18:33:29.638404",
+    "level": "DEBUG",
+    "service": "cache",
+    "message": "2025-06-29 18:33:29 [DEBUG] cache: Memory usage: 75%",
+    "line_number": 20,
+    "source": "kafka_logs"
+  },
+  {
+    "timestamp": "2025-06-29T18:38:29.638404",
+    "level": "INFO",
+    "service": "database",
+    "message": "2025-06-29 18:38:29 [INFO] database: Cache miss for key: user_123",
+    "line_number": 21,
+    "source": "kafka_logs"
+  },
+  {
+    "timestamp": "2025-06-29T18:43:29.638404",
+    "level": "INFO",
+    "service": "database",
+    "message": "2025-06-29 18:43:29 [INFO] database: Backup completed successfully",
+    "line_number": 22,
+    "source": "kafka_logs"
+  },
+  {
+    "timestamp": "2025-06-29T18:48:29.638404",
+    "level": "DEBUG",
+    "service": "database",
+    "message": "2025-06-29 18:48:29 [DEBUG] database: Authentication successful",
+    "line_number": 23,
+    "source": "kafka_logs"
+  },
+  {
+    "timestamp": "2025-06-29T18:53:29.638404",
+    "level": "WARN",
+    "service": "cache",
+    "message": "2025-06-29 18:53:29 [WARN] cache: API rate limit exceeded",
+    "line_number": 24,
+    "source": "kafka_logs"
+  },
+  {
+    "timestamp": "2025-06-29T18:58:29.638404",
+    "level": "INFO",
+    "service": "auth-service",
+    "message": "2025-06-29 18:58:29 [INFO] auth-service: Database connection established",
+    "line_number": 25,
+    "source": "kafka_logs"
+  },
+  {
+    "timestamp": "2025-06-29T19:03:29.638404",
+    "level": "WARN",
+    "service": "auth-service",
+    "message": "2025-06-29 19:03:29 [WARN] auth-service: Request processed successfully",
+    "line_number": 26,
+    "source": "kafka_logs"
+  },
+  {
+    "timestamp": "2025-06-29T19:08:29.638404",
+    "level": "INFO",
+    "service": "auth-service",
+    "message": "2025-06-29 19:08:29 [INFO] auth-service: Authentication successful",
+    "line_number": 27,
+    "source": "kafka_logs"
+  },
+  {
+    "timestamp": "2025-06-29T19:13:29.638404",
+    "level": "INFO",
+    "service": "web-server",
+    "message": "2025-06-29 19:13:29 [INFO] web-server: Request processed successfully",
+    "line_number": 28,
+    "source": "kafka_logs"
+  },
+  {
+    "timestamp": "2025-06-29T19:18:29.638404",
+    "level": "WARN",
+    "service": "auth-service",
+    "message": "2025-06-29 19:18:29 [WARN] auth-service: Backup completed successfully",
+    "line_number": 29,
+    "source": "kafka_logs"
+  },
+  {
+    "timestamp": "2025-06-29T19:23:29.638404",
+    "level": "INFO",
+    "service": "auth-service",
+    "message": "2025-06-29 19:23:29 [INFO] auth-service: API rate limit exceeded",
+    "line_number": 30,
+    "source": "kafka_logs"
+  },
+  {
+    "timestamp": "2025-06-29T19:28:29.638404",
+    "level": "ERROR",
+    "service": "auth-service",
+    "message": "2025-06-29 19:28:29 [ERROR] auth-service: File uploaded: document.pdf",
+    "line_number": 31,
+    "source": "kafka_logs"
+  },
+  {
+    "timestamp": "2025-06-29T19:33:29.638404",
+    "level": "WARN",
+    "service": "auth-service",
+    "message": "2025-06-29 19:33:29 [WARN] auth-service: Cache miss for key: user_123",
+    "line_number": 32,
+    "source": "kafka_logs"
+  },
+  {
+    "timestamp": "2025-06-29T19:38:29.638404",
+    "level": "DEBUG",
+    "service": "database",
+    "message": "2025-06-29 19:38:29 [DEBUG] database: Memory usage: 75%",
+    "line_number": 33,
+    "source": "kafka_logs"
+  },
+  {
+    "timestamp": "2025-06-29T19:43:29.638404",
+    "level": "INFO",
+    "service": "web-server",
+    "message": "2025-06-29 19:43:29 [INFO] web-server: Cache miss for key: user_123",
+    "line_number": 34,
+    "source": "kafka_logs"
+  },
+  {
+    "timestamp": "2025-06-29T19:48:29.638404",
+    "level": "WARN",
+    "service": "auth-service",
+    "message": "2025-06-29 19:48:29 [WARN] auth-service: Database connection established",
+    "line_number": 35,
+    "source": "kafka_logs"
+  },
+  {
+    "timestamp": "2025-06-29T19:53:29.638404",
+    "level": "WARN",
+    "service": "database",
+    "message": "2025-06-29 19:53:29 [WARN] database: Backup completed successfully",
+    "line_number": 36,
+    "source": "kafka_logs"
+  },
+  {
+    "timestamp": "2025-06-29T19:58:29.638404",
+    "level": "ERROR",
+    "service": "database",
+    "message": "2025-06-29 19:58:29 [ERROR] database: API rate limit exceeded",
+    "line_number": 37,
+    "source": "kafka_logs"
+  },
+  {
+    "timestamp": "2025-06-29T20:03:29.638404",
+    "level": "ERROR",
+    "service": "auth-service",
+    "message": "2025-06-29 20:03:29 [ERROR] auth-service: Database connection established",
+    "line_number": 38,
+    "source": "kafka_logs"
+  },
+  {
+    "timestamp": "2025-06-29T20:08:29.638404",
+    "level": "DEBUG",
+    "service": "web-server",
+    "message": "2025-06-29 20:08:29 [DEBUG] web-server: Backup completed successfully",
+    "line_number": 39,
+    "source": "kafka_logs"
+  },
+  {
+    "timestamp": "2025-06-29T20:13:29.638404",
+    "level": "ERROR",
+    "service": "database",
+    "message": "2025-06-29 20:13:29 [ERROR] database: Backup completed successfully",
+    "line_number": 40,
+    "source": "kafka_logs"
+  },
+  {
+    "timestamp": "2025-06-29T20:18:29.638404",
+    "level": "ERROR",
+    "service": "auth-service",
+    "message": "2025-06-29 20:18:29 [ERROR] auth-service: API rate limit exceeded",
+    "line_number": 41,
+    "source": "kafka_logs"
+  },
+  {
+    "timestamp": "2025-06-29T20:23:29.638404",
+    "level": "WARN",
+    "service": "auth-service",
+    "message": "2025-06-29 20:23:29 [WARN] auth-service: Backup completed successfully",
+    "line_number": 42,
+    "source": "kafka_logs"
+  },
+  {
+    "timestamp": "2025-06-29T20:28:29.638404",
+    "level": "ERROR",
+    "service": "database",
+    "message": "2025-06-29 20:28:29 [ERROR] database: API rate limit exceeded",
+    "line_number": 43,
+    "source": "kafka_logs"
+  },
+  {
+    "timestamp": "2025-06-29T20:33:29.638404",
+    "level": "ERROR",
+    "service": "database",
+    "message": "2025-06-29 20:33:29 [ERROR] database: Backup completed successfully",
+    "line_number": 44,
+    "source": "kafka_logs"
+  },
+  {
+    "timestamp": "2025-06-29T20:38:29.638404",
+    "level": "DEBUG",
+    "service": "auth-service",
+    "message": "2025-06-29 20:38:29 [DEBUG] auth-service: Cache miss for key: user_123",
+    "line_number": 45,
+    "source": "kafka_logs"
+  },
+  {
+    "timestamp": "2025-06-29T20:43:29.638404",
+    "level": "INFO",
+    "service": "cache",
+    "message": "2025-06-29 20:43:29 [INFO] cache: Cache miss for key: user_123",
+    "line_number": 46,
+    "source": "kafka_logs"
+  },
+  {
+    "timestamp": "2025-06-29T20:48:29.638404",
+    "level": "ERROR",
+    "service": "database",
+    "message": "2025-06-29 20:48:29 [ERROR] database: API rate limit exceeded",
+    "line_number": 47,
+    "source": "kafka_logs"
+  },
+  {
+    "timestamp": "2025-06-29T20:53:29.638404",
+    "level": "ERROR",
+    "service": "auth-service",
+    "message": "2025-06-29 20:53:29 [ERROR] auth-service: Request processed successfully",
+    "line_number": 48,
+    "source": "kafka_logs"
+  },
+  {
+    "timestamp": "2025-06-29T20:58:29.638404",
+    "level": "DEBUG",
+    "service": "database",
+    "message": "2025-06-29 20:58:29 [DEBUG] database: Database connection established",
+    "line_number": 49,
+    "source": "kafka_logs"
+  },
+  {
+    "timestamp": "2025-06-29T21:03:29.638404",
+    "level": "ERROR",
+    "service": "cache",
+    "message": "2025-06-29 21:03:29 [ERROR] cache: Authentication successful",
+    "line_number": 50,
+    "source": "kafka_logs"
+  },
+  {
+    "timestamp": "2025-06-29T21:08:29.638404",
+    "level": "DEBUG",
+    "service": "auth-service",
+    "message": "2025-06-29 21:08:29 [DEBUG] auth-service: API rate limit exceeded",
+    "line_number": 51,
+    "source": "kafka_logs"
+  },
+  {
+    "timestamp": "2025-06-29T21:13:29.638404",
+    "level": "INFO",
+    "service": "web-server",
+    "message": "2025-06-29 21:13:29 [INFO] web-server: Authentication successful",
+    "line_number": 52,
+    "source": "kafka_logs"
+  },
+  {
+    "timestamp": "2025-06-29T21:18:29.638404",
+    "level": "WARN",
+    "service": "cache",
+    "message": "2025-06-29 21:18:29 [WARN] cache: Database connection established",
+    "line_number": 53,
+    "source": "kafka_logs"
+  },
+  {
+    "timestamp": "2025-06-29T21:23:29.638404",
+    "level": "DEBUG",
+    "service": "auth-service",
+    "message": "2025-06-29 21:23:29 [DEBUG] auth-service: Request processed successfully",
+    "line_number": 54,
+    "source": "kafka_logs"
+  },
+  {
+    "timestamp": "2025-06-29T21:28:29.638404",
+    "level": "INFO",
+    "service": "cache",
+    "message": "2025-06-29 21:28:29 [INFO] cache: Database connection established",
+    "line_number": 55,
+    "source": "kafka_logs"
+  },
+  {
+    "timestamp": "2025-06-29T21:33:29.638404",
+    "level": "INFO",
+    "service": "web-server",
+    "message": "2025-06-29 21:33:29 [INFO] web-server: Request processed successfully",
+    "line_number": 56,
+    "source": "kafka_logs"
+  },
+  {
+    "timestamp": "2025-06-29T21:38:29.638404",
+    "level": "INFO",
+    "service": "cache",
+    "message": "2025-06-29 21:38:29 [INFO] cache: Cache miss for key: user_123",
+    "line_number": 57,
+    "source": "kafka_logs"
+  },
+  {
+    "timestamp": "2025-06-29T21:43:29.638404",
+    "level": "INFO",
+    "service": "auth-service",
+    "message": "2025-06-29 21:43:29 [INFO] auth-service: API rate limit exceeded",
+    "line_number": 58,
+    "source": "kafka_logs"
+  },
+  {
+    "timestamp": "2025-06-29T21:48:29.638404",
+    "level": "INFO",
+    "service": "auth-service",
+    "message": "2025-06-29 21:48:29 [INFO] auth-service: Memory usage: 75%",
+    "line_number": 59,
+    "source": "kafka_logs"
+  },
+  {
+    "timestamp": "2025-06-29T21:53:29.638404",
+    "level": "WARN",
+    "service": "cache",
+    "message": "2025-06-29 21:53:29 [WARN] cache: Authentication successful",
+    "line_number": 60,
+    "source": "kafka_logs"
+  },
+  {
+    "timestamp": "2025-06-29T21:58:29.638404",
+    "level": "INFO",
+    "service": "cache",
+    "message": "2025-06-29 21:58:29 [INFO] cache: Authentication successful",
+    "line_number": 61,
+    "source": "kafka_logs"
+  },
+  {
+    "timestamp": "2025-06-29T22:03:29.638404",
+    "level": "INFO",
+    "service": "database",
+    "message": "2025-06-29 22:03:29 [INFO] database: File uploaded: document.pdf",
+    "line_number": 62,
+    "source": "kafka_logs"
+  },
+  {
+    "timestamp": "2025-06-29T22:08:29.638404",
+    "level": "WARN",
+    "service": "database",
+    "message": "2025-06-29 22:08:29 [WARN] database: Cache miss for key: user_123",
+    "line_number": 63,
+    "source": "kafka_logs"
+  },
+  {
+    "timestamp": "2025-06-29T22:13:29.638404",
+    "level": "DEBUG",
+    "service": "database",
+    "message": "2025-06-29 22:13:29 [DEBUG] database: API rate limit exceeded",
+    "line_number": 64,
+    "source": "kafka_logs"
+  },
+  {
+    "timestamp": "2025-06-29T22:18:29.638404",
+    "level": "WARN",
+    "service": "database",
+    "message": "2025-06-29 22:18:29 [WARN] database: File uploaded: document.pdf",
+    "line_number": 65,
+    "source": "kafka_logs"
+  },
+  {
+    "timestamp": "2025-06-29T22:23:29.638404",
+    "level": "DEBUG",
+    "service": "auth-service",
+    "message": "2025-06-29 22:23:29 [DEBUG] auth-service: Request processed successfully",
+    "line_number": 66,
+    "source": "kafka_logs"
+  },
+  {
+    "timestamp": "2025-06-29T22:28:29.638404",
+    "level": "INFO",
+    "service": "auth-service",
+    "message": "2025-06-29 22:28:29 [INFO] auth-service: Memory usage: 75%",
+    "line_number": 67,
+    "source": "kafka_logs"
+  },
+  {
+    "timestamp": "2025-06-29T22:33:29.638404",
+    "level": "INFO",
+    "service": "auth-service",
+    "message": "2025-06-29 22:33:29 [INFO] auth-service: Request processed successfully",
+    "line_number": 68,
+    "source": "kafka_logs"
+  },
+  {
+    "timestamp": "2025-06-29T22:38:29.638404",
+    "level": "INFO",
+    "service": "database",
+    "message": "2025-06-29 22:38:29 [INFO] database: File uploaded: document.pdf",
+    "line_number": 69,
+    "source": "kafka_logs"
+  },
+  {
+    "timestamp": "2025-06-29T22:43:29.638404",
+    "level": "ERROR",
+    "service": "database",
+    "message": "2025-06-29 22:43:29 [ERROR] database: Memory usage: 75%",
+    "line_number": 70,
+    "source": "kafka_logs"
+  },
+  {
+    "timestamp": "2025-06-29T22:48:29.638404",
+    "level": "DEBUG",
+    "service": "database",
+    "message": "2025-06-29 22:48:29 [DEBUG] database: Authentication successful",
+    "line_number": 71,
+    "source": "kafka_logs"
+  },
+  {
+    "timestamp": "2025-06-29T22:53:29.638404",
+    "level": "DEBUG",
+    "service": "cache",
+    "message": "2025-06-29 22:53:29 [DEBUG] cache: Request processed successfully",
+    "line_number": 72,
+    "source": "kafka_logs"
+  },
+  {
+    "timestamp": "2025-06-29T22:58:29.638404",
+    "level": "ERROR",
+    "service": "auth-service",
+    "message": "2025-06-29 22:58:29 [ERROR] auth-service: File uploaded: document.pdf",
+    "line_number": 73,
+    "source": "kafka_logs"
+  },
+  {
+    "timestamp": "2025-06-29T23:03:29.638404",
+    "level": "INFO",
+    "service": "auth-service",
+    "message": "2025-06-29 23:03:29 [INFO] auth-service: Memory usage: 75%",
+    "line_number": 74,
+    "source": "kafka_logs"
+  },
+  {
+    "timestamp": "2025-06-29T23:08:29.638404",
+    "level": "WARN",
+    "service": "auth-service",
+    "message": "2025-06-29 23:08:29 [WARN] auth-service: Backup completed successfully",
+    "line_number": 75,
+    "source": "kafka_logs"
+  },
+  {
+    "timestamp": "2025-06-29T23:13:29.638404",
+    "level": "DEBUG",
+    "service": "web-server",
+    "message": "2025-06-29 23:13:29 [DEBUG] web-server: Request processed successfully",
+    "line_number": 76,
+    "source": "kafka_logs"
+  },
+  {
+    "timestamp": "2025-06-29T23:18:29.638404",
+    "level": "DEBUG",
+    "service": "cache",
+    "message": "2025-06-29 23:18:29 [DEBUG] cache: Request processed successfully",
+    "line_number": 77,
+    "source": "kafka_logs"
+  },
+  {
+    "timestamp": "2025-06-29T23:23:29.638404",
+    "level": "WARN",
+    "service": "auth-service",
+    "message": "2025-06-29 23:23:29 [WARN] auth-service: File uploaded: document.pdf",
+    "line_number": 78,
+    "source": "kafka_logs"
+  },
+  {
+    "timestamp": "2025-06-29T23:28:29.638404",
+    "level": "INFO",
+    "service": "cache",
+    "message": "2025-06-29 23:28:29 [INFO] cache: Authentication successful",
+    "line_number": 79,
+    "source": "kafka_logs"
+  },
+  {
+    "timestamp": "2025-06-29T23:33:29.638404",
+    "level": "ERROR",
+    "service": "database",
+    "message": "2025-06-29 23:33:29 [ERROR] database: Database connection established",
+    "line_number": 80,
+    "source": "kafka_logs"
+  },
+  {
+    "timestamp": "2025-06-29T23:38:29.638404",
+    "level": "DEBUG",
+    "service": "database",
+    "message": "2025-06-29 23:38:29 [DEBUG] database: File uploaded: document.pdf",
+    "line_number": 81,
+    "source": "kafka_logs"
+  },
+  {
+    "timestamp": "2025-06-29T23:43:29.638404",
+    "level": "WARN",
+    "service": "cache",
+    "message": "2025-06-29 23:43:29 [WARN] cache: Memory usage: 75%",
+    "line_number": 82,
+    "source": "kafka_logs"
+  },
+  {
+    "timestamp": "2025-06-29T23:48:29.638404",
+    "level": "INFO",
+    "service": "cache",
+    "message": "2025-06-29 23:48:29 [INFO] cache: Memory usage: 75%",
+    "line_number": 83,
+    "source": "kafka_logs"
+  },
+  {
+    "timestamp": "2025-06-29T23:53:29.638404",
+    "level": "DEBUG",
+    "service": "web-server",
+    "message": "2025-06-29 23:53:29 [DEBUG] web-server: File uploaded: document.pdf",
+    "line_number": 84,
+    "source": "kafka_logs"
+  },
+  {
+    "timestamp": "2025-06-29T23:58:29.638404",
+    "level": "DEBUG",
+    "service": "database",
+    "message": "2025-06-29 23:58:29 [DEBUG] database: Request processed successfully",
+    "line_number": 85,
+    "source": "kafka_logs"
+  },
+  {
+    "timestamp": "2025-06-30T00:03:29.638404",
+    "level": "INFO",
+    "service": "web-server",
+    "message": "2025-06-30 00:03:29 [INFO] web-server: Authentication successful",
+    "line_number": 86,
+    "source": "kafka_logs"
+  },
+  {
+    "timestamp": "2025-06-30T00:08:29.638404",
+    "level": "ERROR",
+    "service": "web-server",
+    "message": "2025-06-30 00:08:29 [ERROR] web-server: Database connection established",
+    "line_number": 87,
+    "source": "kafka_logs"
+  },
+  {
+    "timestamp": "2025-06-30T00:13:29.638404",
+    "level": "INFO",
+    "service": "cache",
+    "message": "2025-06-30 00:13:29 [INFO] cache: Memory usage: 75%",
+    "line_number": 88,
+    "source": "kafka_logs"
+  },
+  {
+    "timestamp": "2025-06-30T00:18:29.638404",
+    "level": "ERROR",
+    "service": "web-server",
+    "message": "2025-06-30 00:18:29 [ERROR] web-server: File uploaded: document.pdf",
+    "line_number": 89,
+    "source": "kafka_logs"
+  },
+  {
+    "timestamp": "2025-06-30T00:23:29.638404",
+    "level": "DEBUG",
+    "service": "web-server",
+    "message": "2025-06-30 00:23:29 [DEBUG] web-server: Request processed successfully",
+    "line_number": 90,
+    "source": "kafka_logs"
+  },
+  {
+    "timestamp": "2025-06-30T00:28:29.638404",
+    "level": "DEBUG",
+    "service": "web-server",
+    "message": "2025-06-30 00:28:29 [DEBUG] web-server: Cache miss for key: user_123",
+    "line_number": 91,
+    "source": "kafka_logs"
+  },
+  {
+    "timestamp": "2025-06-30T00:33:29.638404",
+    "level": "INFO",
+    "service": "auth-service",
+    "message": "2025-06-30 00:33:29 [INFO] auth-service: Memory usage: 75%",
+    "line_number": 92,
+    "source": "kafka_logs"
+  },
+  {
+    "timestamp": "2025-06-30T00:38:29.638404",
+    "level": "ERROR",
+    "service": "auth-service",
+    "message": "2025-06-30 00:38:29 [ERROR] auth-service: Backup completed successfully",
+    "line_number": 93,
+    "source": "kafka_logs"
+  },
+  {
+    "timestamp": "2025-06-30T00:43:29.638404",
+    "level": "WARN",
+    "service": "auth-service",
+    "message": "2025-06-30 00:43:29 [WARN] auth-service: Request processed successfully",
+    "line_number": 94,
+    "source": "kafka_logs"
+  },
+  {
+    "timestamp": "2025-06-30T00:48:29.638404",
+    "level": "ERROR",
+    "service": "database",
+    "message": "2025-06-30 00:48:29 [ERROR] database: File uploaded: document.pdf",
+    "line_number": 95,
+    "source": "kafka_logs"
+  },
+  {
+    "timestamp": "2025-06-30T00:53:29.638404",
+    "level": "INFO",
+    "service": "web-server",
+    "message": "2025-06-30 00:53:29 [INFO] web-server: Memory usage: 75%",
+    "line_number": 96,
+    "source": "kafka_logs"
+  },
+  {
+    "timestamp": "2025-06-30T00:58:29.638404",
+    "level": "INFO",
+    "service": "auth-service",
+    "message": "2025-06-30 00:58:29 [INFO] auth-service: API rate limit exceeded",
+    "line_number": 97,
+    "source": "kafka_logs"
+  },
+  {
+    "timestamp": "2025-06-30T01:03:29.638404",
+    "level": "INFO",
+    "service": "web-server",
+    "message": "2025-06-30 01:03:29 [INFO] web-server: File uploaded: document.pdf",
+    "line_number": 98,
+    "source": "kafka_logs"
+  },
+  {
+    "timestamp": "2025-06-30T01:08:29.638404",
+    "level": "WARN",
+    "service": "auth-service",
+    "message": "2025-06-30 01:08:29 [WARN] auth-service: Cache miss for key: user_123",
+    "line_number": 99,
+    "source": "kafka_logs"
+  },
+  {
+    "timestamp": "2025-06-30T01:13:29.638404",
+    "level": "ERROR",
+    "service": "web-server",
+    "message": "2025-06-30 01:13:29 [ERROR] web-server: Memory usage: 75%",
+    "line_number": 100,
+    "source": "kafka_logs"
+  }
+]

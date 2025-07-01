@@ -32,7 +32,7 @@ Create or update your `.env` file:
 ```env
 # Gemini API Configuration
 GEMINI_API_KEY=your_api_key_here
-GEMINI_MODEL=gemini-1.5-flash
+GEMINI_MODEL=gemini-2.5-pro
 GEMINI_MAX_TOKENS=2048
 GEMINI_TEMPERATURE=0.3
 
@@ -60,15 +60,16 @@ python main.py
 
 | Model | Speed | Quality | Best For |
 |-------|-------|---------|----------|
-| `gemini-1.5-flash` | Fast | Good | General use |
-| `gemini-1.5-pro` | Medium | Excellent | Complex analysis |
-| `gemini-1.0-pro` | Medium | Good | Balanced |
+| `gemini-2.5-flash` | Fast | Good | General use |
+| `gemini-2.5-pro` | Medium | Excellent | Complex analysis |
+| `gemini-1.5-flash` | Fast | Good | Legacy support |
+| `gemini-1.5-pro` | Medium | Excellent | Legacy support |
 
 ### Configuration Parameters
 
 ```env
 # Model selection
-GEMINI_MODEL=gemini-1.5-flash
+GEMINI_MODEL=gemini-2.5-pro
 
 # Response length (tokens)
 GEMINI_MAX_TOKENS=2048
@@ -100,7 +101,7 @@ python main.py
 ### Custom Configuration
 ```env
 # For more detailed analysis
-GEMINI_MODEL=gemini-1.5-pro
+GEMINI_MODEL=gemini-2.5-pro
 GEMINI_MAX_TOKENS=4096
 GEMINI_TEMPERATURE=0.1
 ```
@@ -133,15 +134,15 @@ GEMINI_TEMPERATURE=0.1
 ## 📊 **Performance Tips**
 
 ### For Better Results
-- Use `gemini-1.5-flash` for speed
-- Use `gemini-1.5-pro` for quality
+- Use `gemini-2.5-flash` for speed
+- Use `gemini-2.5-pro` for quality
 - Set `temperature=0.1` for focused analysis
 - Set `temperature=0.7` for creative insights
 
 ### For Cost Optimization
 - Use shorter prompts
 - Set lower `max_tokens`
-- Use `gemini-1.5-flash` (cheaper)
+- Use `gemini-2.5-flash` (cheaper)
 
 ## 🔐 **Security Best Practices**
 

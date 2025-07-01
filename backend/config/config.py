@@ -35,7 +35,7 @@ class Config:
     @property
     def gemini_model(self) -> str:
         """Get Gemini model name from environment."""
-        return os.getenv("GEMINI_MODEL", "gemini-1.5-flash")
+        return os.getenv("GEMINI_MODEL", "gemini-2.5-pro")
     
     @property
     def gemini_max_tokens(self) -> int:

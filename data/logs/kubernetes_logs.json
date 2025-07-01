@@ -1,0 +1,802 @@
+[
+  {
+    "timestamp": "2025-06-29T16:59:21.824712",
+    "level": "ERROR",
+    "service": "cache",
+    "message": "2025-06-29 16:59:21 [ERROR] cache: Backup completed successfully",
+    "line_number": 1,
+    "source": "kubernetes_logs"
+  },
+  {
+    "timestamp": "2025-06-29T17:04:21.824712",
+    "level": "ERROR",
+    "service": "database",
+    "message": "2025-06-29 17:04:21 [ERROR] database: Authentication successful",
+    "line_number": 2,
+    "source": "kubernetes_logs"
+  },
+  {
+    "timestamp": "2025-06-29T17:09:21.824712",
+    "level": "ERROR",
+    "service": "cache",
+    "message": "2025-06-29 17:09:21 [ERROR] cache: Memory usage: 75%",
+    "line_number": 3,
+    "source": "kubernetes_logs"
+  },
+  {
+    "timestamp": "2025-06-29T17:14:21.824712",
+    "level": "WARN",
+    "service": "cache",
+    "message": "2025-06-29 17:14:21 [WARN] cache: Authentication successful",
+    "line_number": 4,
+    "source": "kubernetes_logs"
+  },
+  {
+    "timestamp": "2025-06-29T17:19:21.824712",
+    "level": "ERROR",
+    "service": "cache",
+    "message": "2025-06-29 17:19:21 [ERROR] cache: Request processed successfully",
+    "line_number": 5,
+    "source": "kubernetes_logs"
+  },
+  {
+    "timestamp": "2025-06-29T17:24:21.824712",
+    "level": "WARN",
+    "service": "auth-service",
+    "message": "2025-06-29 17:24:21 [WARN] auth-service: API rate limit exceeded",
+    "line_number": 6,
+    "source": "kubernetes_logs"
+  },
+  {
+    "timestamp": "2025-06-29T17:29:21.824712",
+    "level": "DEBUG",
+    "service": "database",
+    "message": "2025-06-29 17:29:21 [DEBUG] database: API rate limit exceeded",
+    "line_number": 7,
+    "source": "kubernetes_logs"
+  },
+  {
+    "timestamp": "2025-06-29T17:34:21.824712",
+    "level": "WARN",
+    "service": "cache",
+    "message": "2025-06-29 17:34:21 [WARN] cache: Request processed successfully",
+    "line_number": 8,
+    "source": "kubernetes_logs"
+  },
+  {
+    "timestamp": "2025-06-29T17:39:21.824712",
+    "level": "INFO",
+    "service": "cache",
+    "message": "2025-06-29 17:39:21 [INFO] cache: API rate limit exceeded",
+    "line_number": 9,
+    "source": "kubernetes_logs"
+  },
+  {
+    "timestamp": "2025-06-29T17:44:21.824712",
+    "level": "INFO",
+    "service": "database",
+    "message": "2025-06-29 17:44:21 [INFO] database: Authentication successful",
+    "line_number": 10,
+    "source": "kubernetes_logs"
+  },
+  {
+    "timestamp": "2025-06-29T17:49:21.824712",
+    "level": "ERROR",
+    "service": "web-server",
+    "message": "2025-06-29 17:49:21 [ERROR] web-server: Database connection established",
+    "line_number": 11,
+    "source": "kubernetes_logs"
+  },
+  {
+    "timestamp": "2025-06-29T17:54:21.824712",
+    "level": "DEBUG",
+    "service": "cache",
+    "message": "2025-06-29 17:54:21 [DEBUG] cache: Cache miss for key: user_123",
+    "line_number": 12,
+    "source": "kubernetes_logs"
+  },
+  {
+    "timestamp": "2025-06-29T17:59:21.824712",
+    "level": "DEBUG",
+    "service": "web-server",
+    "message": "2025-06-29 17:59:21 [DEBUG] web-server: Request processed successfully",
+    "line_number": 13,
+    "source": "kubernetes_logs"
+  },
+  {
+    "timestamp": "2025-06-29T18:04:21.824712",
+    "level": "DEBUG",
+    "service": "database",
+    "message": "2025-06-29 18:04:21 [DEBUG] database: Authentication successful",
+    "line_number": 14,
+    "source": "kubernetes_logs"
+  },
+  {
+    "timestamp": "2025-06-29T18:09:21.824712",
+    "level": "WARN",
+    "service": "web-server",
+    "message": "2025-06-29 18:09:21 [WARN] web-server: File uploaded: document.pdf",
+    "line_number": 15,
+    "source": "kubernetes_logs"
+  },
+  {
+    "timestamp": "2025-06-29T18:14:21.824712",
+    "level": "INFO",
+    "service": "cache",
+    "message": "2025-06-29 18:14:21 [INFO] cache: Cache miss for key: user_123",
+    "line_number": 16,
+    "source": "kubernetes_logs"
+  },
+  {
+    "timestamp": "2025-06-29T18:19:21.824712",
+    "level": "DEBUG",
+    "service": "cache",
+    "message": "2025-06-29 18:19:21 [DEBUG] cache: Backup completed successfully",
+    "line_number": 17,
+    "source": "kubernetes_logs"
+  },
+  {
+    "timestamp": "2025-06-29T18:24:21.824712",
+    "level": "ERROR",
+    "service": "auth-service",
+    "message": "2025-06-29 18:24:21 [ERROR] auth-service: API rate limit exceeded",
+    "line_number": 18,
+    "source": "kubernetes_logs"
+  },
+  {
+    "timestamp": "2025-06-29T18:29:21.824712",
+    "level": "INFO",
+    "service": "web-server",
+    "message": "2025-06-29 18:29:21 [INFO] web-server: Memory usage: 75%",
+    "line_number": 19,
+    "source": "kubernetes_logs"
+  },
+  {
+    "timestamp": "2025-06-29T18:34:21.824712",
+    "level": "WARN",
+    "service": "cache",
+    "message": "2025-06-29 18:34:21 [WARN] cache: File uploaded: document.pdf",
+    "line_number": 20,
+    "source": "kubernetes_logs"
+  },
+  {
+    "timestamp": "2025-06-29T18:39:21.824712",
+    "level": "WARN",
+    "service": "web-server",
+    "message": "2025-06-29 18:39:21 [WARN] web-server: API rate limit exceeded",
+    "line_number": 21,
+    "source": "kubernetes_logs"
+  },
+  {
+    "timestamp": "2025-06-29T18:44:21.824712",
+    "level": "DEBUG",
+    "service": "web-server",
+    "message": "2025-06-29 18:44:21 [DEBUG] web-server: Database connection established",
+    "line_number": 22,
+    "source": "kubernetes_logs"
+  },
+  {
+    "timestamp": "2025-06-29T18:49:21.824712",
+    "level": "ERROR",
+    "service": "cache",
+    "message": "2025-06-29 18:49:21 [ERROR] cache: Authentication successful",
+    "line_number": 23,
+    "source": "kubernetes_logs"
+  },
+  {
+    "timestamp": "2025-06-29T18:54:21.824712",
+    "level": "WARN",
+    "service": "cache",
+    "message": "2025-06-29 18:54:21 [WARN] cache: Authentication successful",
+    "line_number": 24,
+    "source": "kubernetes_logs"
+  },
+  {
+    "timestamp": "2025-06-29T18:59:21.824712",
+    "level": "WARN",
+    "service": "cache",
+    "message": "2025-06-29 18:59:21 [WARN] cache: Authentication successful",
+    "line_number": 25,
+    "source": "kubernetes_logs"
+  },
+  {
+    "timestamp": "2025-06-29T19:04:21.824712",
+    "level": "DEBUG",
+    "service": "auth-service",
+    "message": "2025-06-29 19:04:21 [DEBUG] auth-service: File uploaded: document.pdf",
+    "line_number": 26,
+    "source": "kubernetes_logs"
+  },
+  {
+    "timestamp": "2025-06-29T19:09:21.824712",
+    "level": "DEBUG",
+    "service": "cache",
+    "message": "2025-06-29 19:09:21 [DEBUG] cache: Cache miss for key: user_123",
+    "line_number": 27,
+    "source": "kubernetes_logs"
+  },
+  {
+    "timestamp": "2025-06-29T19:14:21.824712",
+    "level": "ERROR",
+    "service": "database",
+    "message": "2025-06-29 19:14:21 [ERROR] database: Database connection established",
+    "line_number": 28,
+    "source": "kubernetes_logs"
+  },
+  {
+    "timestamp": "2025-06-29T19:19:21.824712",
+    "level": "ERROR",
+    "service": "database",
+    "message": "2025-06-29 19:19:21 [ERROR] database: API rate limit exceeded",
+    "line_number": 29,
+    "source": "kubernetes_logs"
+  },
+  {
+    "timestamp": "2025-06-29T19:24:21.824712",
+    "level": "WARN",
+    "service": "cache",
+    "message": "2025-06-29 19:24:21 [WARN] cache: Cache miss for key: user_123",
+    "line_number": 30,
+    "source": "kubernetes_logs"
+  },
+  {
+    "timestamp": "2025-06-29T19:29:21.824712",
+    "level": "WARN",
+    "service": "auth-service",
+    "message": "2025-06-29 19:29:21 [WARN] auth-service: Memory usage: 75%",
+    "line_number": 31,
+    "source": "kubernetes_logs"
+  },
+  {
+    "timestamp": "2025-06-29T19:34:21.824712",
+    "level": "INFO",
+    "service": "database",
+    "message": "2025-06-29 19:34:21 [INFO] database: Database connection established",
+    "line_number": 32,
+    "source": "kubernetes_logs"
+  },
+  {
+    "timestamp": "2025-06-29T19:39:21.824712",
+    "level": "INFO",
+    "service": "cache",
+    "message": "2025-06-29 19:39:21 [INFO] cache: Database connection established",
+    "line_number": 33,
+    "source": "kubernetes_logs"
+  },
+  {
+    "timestamp": "2025-06-29T19:44:21.824712",
+    "level": "DEBUG",
+    "service": "cache",
+    "message": "2025-06-29 19:44:21 [DEBUG] cache: API rate limit exceeded",
+    "line_number": 34,
+    "source": "kubernetes_logs"
+  },
+  {
+    "timestamp": "2025-06-29T19:49:21.824712",
+    "level": "ERROR",
+    "service": "auth-service",
+    "message": "2025-06-29 19:49:21 [ERROR] auth-service: File uploaded: document.pdf",
+    "line_number": 35,
+    "source": "kubernetes_logs"
+  },
+  {
+    "timestamp": "2025-06-29T19:54:21.824712",
+    "level": "ERROR",
+    "service": "database",
+    "message": "2025-06-29 19:54:21 [ERROR] database: Authentication successful",
+    "line_number": 36,
+    "source": "kubernetes_logs"
+  },
+  {
+    "timestamp": "2025-06-29T19:59:21.824712",
+    "level": "ERROR",
+    "service": "cache",
+    "message": "2025-06-29 19:59:21 [ERROR] cache: Request processed successfully",
+    "line_number": 37,
+    "source": "kubernetes_logs"
+  },
+  {
+    "timestamp": "2025-06-29T20:04:21.824712",
+    "level": "INFO",
+    "service": "web-server",
+    "message": "2025-06-29 20:04:21 [INFO] web-server: Cache miss for key: user_123",
+    "line_number": 38,
+    "source": "kubernetes_logs"
+  },
+  {
+    "timestamp": "2025-06-29T20:09:21.824712",
+    "level": "ERROR",
+    "service": "auth-service",
+    "message": "2025-06-29 20:09:21 [ERROR] auth-service: Backup completed successfully",
+    "line_number": 39,
+    "source": "kubernetes_logs"
+  },
+  {
+    "timestamp": "2025-06-29T20:14:21.824712",
+    "level": "WARN",
+    "service": "database",
+    "message": "2025-06-29 20:14:21 [WARN] database: Database connection established",
+    "line_number": 40,
+    "source": "kubernetes_logs"
+  },
+  {
+    "timestamp": "2025-06-29T20:19:21.824712",
+    "level": "WARN",
+    "service": "auth-service",
+    "message": "2025-06-29 20:19:21 [WARN] auth-service: Authentication successful",
+    "line_number": 41,
+    "source": "kubernetes_logs"
+  },
+  {
+    "timestamp": "2025-06-29T20:24:21.824712",
+    "level": "ERROR",
+    "service": "database",
+    "message": "2025-06-29 20:24:21 [ERROR] database: File uploaded: document.pdf",
+    "line_number": 42,
+    "source": "kubernetes_logs"
+  },
+  {
+    "timestamp": "2025-06-29T20:29:21.824712",
+    "level": "INFO",
+    "service": "auth-service",
+    "message": "2025-06-29 20:29:21 [INFO] auth-service: Authentication successful",
+    "line_number": 43,
+    "source": "kubernetes_logs"
+  },
+  {
+    "timestamp": "2025-06-29T20:34:21.824712",
+    "level": "INFO",
+    "service": "auth-service",
+    "message": "2025-06-29 20:34:21 [INFO] auth-service: File uploaded: document.pdf",
+    "line_number": 44,
+    "source": "kubernetes_logs"
+  },
+  {
+    "timestamp": "2025-06-29T20:39:21.824712",
+    "level": "ERROR",
+    "service": "auth-service",
+    "message": "2025-06-29 20:39:21 [ERROR] auth-service: Database connection established",
+    "line_number": 45,
+    "source": "kubernetes_logs"
+  },
+  {
+    "timestamp": "2025-06-29T20:44:21.824712",
+    "level": "INFO",
+    "service": "cache",
+    "message": "2025-06-29 20:44:21 [INFO] cache: Database connection established",
+    "line_number": 46,
+    "source": "kubernetes_logs"
+  },
+  {
+    "timestamp": "2025-06-29T20:49:21.824712",
+    "level": "INFO",
+    "service": "web-server",
+    "message": "2025-06-29 20:49:21 [INFO] web-server: Request processed successfully",
+    "line_number": 47,
+    "source": "kubernetes_logs"
+  },
+  {
+    "timestamp": "2025-06-29T20:54:21.824712",
+    "level": "ERROR",
+    "service": "auth-service",
+    "message": "2025-06-29 20:54:21 [ERROR] auth-service: Backup completed successfully",
+    "line_number": 48,
+    "source": "kubernetes_logs"
+  },
+  {
+    "timestamp": "2025-06-29T20:59:21.824712",
+    "level": "ERROR",
+    "service": "web-server",
+    "message": "2025-06-29 20:59:21 [ERROR] web-server: API rate limit exceeded",
+    "line_number": 49,
+    "source": "kubernetes_logs"
+  },
+  {
+    "timestamp": "2025-06-29T21:04:21.824712",
+    "level": "WARN",
+    "service": "database",
+    "message": "2025-06-29 21:04:21 [WARN] database: Database connection established",
+    "line_number": 50,
+    "source": "kubernetes_logs"
+  },
+  {
+    "timestamp": "2025-06-29T21:09:21.824712",
+    "level": "ERROR",
+    "service": "cache",
+    "message": "2025-06-29 21:09:21 [ERROR] cache: API rate limit exceeded",
+    "line_number": 51,
+    "source": "kubernetes_logs"
+  },
+  {
+    "timestamp": "2025-06-29T21:14:21.824712",
+    "level": "WARN",
+    "service": "web-server",
+    "message": "2025-06-29 21:14:21 [WARN] web-server: Cache miss for key: user_123",
+    "line_number": 52,
+    "source": "kubernetes_logs"
+  },
+  {
+    "timestamp": "2025-06-29T21:19:21.824712",
+    "level": "ERROR",
+    "service": "cache",
+    "message": "2025-06-29 21:19:21 [ERROR] cache: API rate limit exceeded",
+    "line_number": 53,
+    "source": "kubernetes_logs"
+  },
+  {
+    "timestamp": "2025-06-29T21:24:21.824712",
+    "level": "DEBUG",
+    "service": "cache",
+    "message": "2025-06-29 21:24:21 [DEBUG] cache: Backup completed successfully",
+    "line_number": 54,
+    "source": "kubernetes_logs"
+  },
+  {
+    "timestamp": "2025-06-29T21:29:21.824712",
+    "level": "DEBUG",
+    "service": "web-server",
+    "message": "2025-06-29 21:29:21 [DEBUG] web-server: Cache miss for key: user_123",
+    "line_number": 55,
+    "source": "kubernetes_logs"
+  },
+  {
+    "timestamp": "2025-06-29T21:34:21.824712",
+    "level": "INFO",
+    "service": "web-server",
+    "message": "2025-06-29 21:34:21 [INFO] web-server: Memory usage: 75%",
+    "line_number": 56,
+    "source": "kubernetes_logs"
+  },
+  {
+    "timestamp": "2025-06-29T21:39:21.824712",
+    "level": "DEBUG",
+    "service": "cache",
+    "message": "2025-06-29 21:39:21 [DEBUG] cache: Authentication successful",
+    "line_number": 57,
+    "source": "kubernetes_logs"
+  },
+  {
+    "timestamp": "2025-06-29T21:44:21.824712",
+    "level": "WARN",
+    "service": "database",
+    "message": "2025-06-29 21:44:21 [WARN] database: Memory usage: 75%",
+    "line_number": 58,
+    "source": "kubernetes_logs"
+  },
+  {
+    "timestamp": "2025-06-29T21:49:21.824712",
+    "level": "WARN",
+    "service": "cache",
+    "message": "2025-06-29 21:49:21 [WARN] cache: Cache miss for key: user_123",
+    "line_number": 59,
+    "source": "kubernetes_logs"
+  },
+  {
+    "timestamp": "2025-06-29T21:54:21.824712",
+    "level": "WARN",
+    "service": "web-server",
+    "message": "2025-06-29 21:54:21 [WARN] web-server: API rate limit exceeded",
+    "line_number": 60,
+    "source": "kubernetes_logs"
+  },
+  {
+    "timestamp": "2025-06-29T21:59:21.824712",
+    "level": "ERROR",
+    "service": "database",
+    "message": "2025-06-29 21:59:21 [ERROR] database: Authentication successful",
+    "line_number": 61,
+    "source": "kubernetes_logs"
+  },
+  {
+    "timestamp": "2025-06-29T22:04:21.824712",
+    "level": "INFO",
+    "service": "cache",
+    "message": "2025-06-29 22:04:21 [INFO] cache: Cache miss for key: user_123",
+    "line_number": 62,
+    "source": "kubernetes_logs"
+  },
+  {
+    "timestamp": "2025-06-29T22:09:21.824712",
+    "level": "ERROR",
+    "service": "database",
+    "message": "2025-06-29 22:09:21 [ERROR] database: File uploaded: document.pdf",
+    "line_number": 63,
+    "source": "kubernetes_logs"
+  },
+  {
+    "timestamp": "2025-06-29T22:14:21.824712",
+    "level": "INFO",
+    "service": "database",
+    "message": "2025-06-29 22:14:21 [INFO] database: Authentication successful",
+    "line_number": 64,
+    "source": "kubernetes_logs"
+  },
+  {
+    "timestamp": "2025-06-29T22:19:21.824712",
+    "level": "INFO",
+    "service": "database",
+    "message": "2025-06-29 22:19:21 [INFO] database: File uploaded: document.pdf",
+    "line_number": 65,
+    "source": "kubernetes_logs"
+  },
+  {
+    "timestamp": "2025-06-29T22:24:21.824712",
+    "level": "ERROR",
+    "service": "database",
+    "message": "2025-06-29 22:24:21 [ERROR] database: Database connection established",
+    "line_number": 66,
+    "source": "kubernetes_logs"
+  },
+  {
+    "timestamp": "2025-06-29T22:29:21.824712",
+    "level": "DEBUG",
+    "service": "cache",
+    "message": "2025-06-29 22:29:21 [DEBUG] cache: API rate limit exceeded",
+    "line_number": 67,
+    "source": "kubernetes_logs"
+  },
+  {
+    "timestamp": "2025-06-29T22:34:21.824712",
+    "level": "DEBUG",
+    "service": "web-server",
+    "message": "2025-06-29 22:34:21 [DEBUG] web-server: Memory usage: 75%",
+    "line_number": 68,
+    "source": "kubernetes_logs"
+  },
+  {
+    "timestamp": "2025-06-29T22:39:21.824712",
+    "level": "WARN",
+    "service": "database",
+    "message": "2025-06-29 22:39:21 [WARN] database: API rate limit exceeded",
+    "line_number": 69,
+    "source": "kubernetes_logs"
+  },
+  {
+    "timestamp": "2025-06-29T22:44:21.824712",
+    "level": "WARN",
+    "service": "web-server",
+    "message": "2025-06-29 22:44:21 [WARN] web-server: Cache miss for key: user_123",
+    "line_number": 70,
+    "source": "kubernetes_logs"
+  },
+  {
+    "timestamp": "2025-06-29T22:49:21.824712",
+    "level": "ERROR",
+    "service": "auth-service",
+    "message": "2025-06-29 22:49:21 [ERROR] auth-service: Cache miss for key: user_123",
+    "line_number": 71,
+    "source": "kubernetes_logs"
+  },
+  {
+    "timestamp": "2025-06-29T22:54:21.824712",
+    "level": "ERROR",
+    "service": "cache",
+    "message": "2025-06-29 22:54:21 [ERROR] cache: File uploaded: document.pdf",
+    "line_number": 72,
+    "source": "kubernetes_logs"
+  },
+  {
+    "timestamp": "2025-06-29T22:59:21.824712",
+    "level": "DEBUG",
+    "service": "web-server",
+    "message": "2025-06-29 22:59:21 [DEBUG] web-server: Backup completed successfully",
+    "line_number": 73,
+    "source": "kubernetes_logs"
+  },
+  {
+    "timestamp": "2025-06-29T23:04:21.824712",
+    "level": "WARN",
+    "service": "web-server",
+    "message": "2025-06-29 23:04:21 [WARN] web-server: Database connection established",
+    "line_number": 74,
+    "source": "kubernetes_logs"
+  },
+  {
+    "timestamp": "2025-06-29T23:09:21.824712",
+    "level": "WARN",
+    "service": "auth-service",
+    "message": "2025-06-29 23:09:21 [WARN] auth-service: File uploaded: document.pdf",
+    "line_number": 75,
+    "source": "kubernetes_logs"
+  },
+  {
+    "timestamp": "2025-06-29T23:14:21.824712",
+    "level": "ERROR",
+    "service": "cache",
+    "message": "2025-06-29 23:14:21 [ERROR] cache: File uploaded: document.pdf",
+    "line_number": 76,
+    "source": "kubernetes_logs"
+  },
+  {
+    "timestamp": "2025-06-29T23:19:21.824712",
+    "level": "INFO",
+    "service": "cache",
+    "message": "2025-06-29 23:19:21 [INFO] cache: Memory usage: 75%",
+    "line_number": 77,
+    "source": "kubernetes_logs"
+  },
+  {
+    "timestamp": "2025-06-29T23:24:21.824712",
+    "level": "DEBUG",
+    "service": "database",
+    "message": "2025-06-29 23:24:21 [DEBUG] database: Memory usage: 75%",
+    "line_number": 78,
+    "source": "kubernetes_logs"
+  },
+  {
+    "timestamp": "2025-06-29T23:29:21.824712",
+    "level": "WARN",
+    "service": "cache",
+    "message": "2025-06-29 23:29:21 [WARN] cache: Backup completed successfully",
+    "line_number": 79,
+    "source": "kubernetes_logs"
+  },
+  {
+    "timestamp": "2025-06-29T23:34:21.824712",
+    "level": "INFO",
+    "service": "web-server",
+    "message": "2025-06-29 23:34:21 [INFO] web-server: Authentication successful",
+    "line_number": 80,
+    "source": "kubernetes_logs"
+  },
+  {
+    "timestamp": "2025-06-29T23:39:21.824712",
+    "level": "DEBUG",
+    "service": "database",
+    "message": "2025-06-29 23:39:21 [DEBUG] database: Memory usage: 75%",
+    "line_number": 81,
+    "source": "kubernetes_logs"
+  },
+  {
+    "timestamp": "2025-06-29T23:44:21.824712",
+    "level": "WARN",
+    "service": "web-server",
+    "message": "2025-06-29 23:44:21 [WARN] web-server: Memory usage: 75%",
+    "line_number": 82,
+    "source": "kubernetes_logs"
+  },
+  {
+    "timestamp": "2025-06-29T23:49:21.824712",
+    "level": "INFO",
+    "service": "database",
+    "message": "2025-06-29 23:49:21 [INFO] database: File uploaded: document.pdf",
+    "line_number": 83,
+    "source": "kubernetes_logs"
+  },
+  {
+    "timestamp": "2025-06-29T23:54:21.824712",
+    "level": "WARN",
+    "service": "auth-service",
+    "message": "2025-06-29 23:54:21 [WARN] auth-service: Cache miss for key: user_123",
+    "line_number": 84,
+    "source": "kubernetes_logs"
+  },
+  {
+    "timestamp": "2025-06-29T23:59:21.824712",
+    "level": "INFO",
+    "service": "cache",
+    "message": "2025-06-29 23:59:21 [INFO] cache: Memory usage: 75%",
+    "line_number": 85,
+    "source": "kubernetes_logs"
+  },
+  {
+    "timestamp": "2025-06-30T00:04:21.824712",
+    "level": "INFO",
+    "service": "auth-service",
+    "message": "2025-06-30 00:04:21 [INFO] auth-service: Memory usage: 75%",
+    "line_number": 86,
+    "source": "kubernetes_logs"
+  },
+  {
+    "timestamp": "2025-06-30T00:09:21.824712",
+    "level": "ERROR",
+    "service": "web-server",
+    "message": "2025-06-30 00:09:21 [ERROR] web-server: Memory usage: 75%",
+    "line_number": 87,
+    "source": "kubernetes_logs"
+  },
+  {
+    "timestamp": "2025-06-30T00:14:21.824712",
+    "level": "INFO",
+    "service": "web-server",
+    "message": "2025-06-30 00:14:21 [INFO] web-server: Backup completed successfully",
+    "line_number": 88,
+    "source": "kubernetes_logs"
+  },
+  {
+    "timestamp": "2025-06-30T00:19:21.824712",
+    "level": "DEBUG",
+    "service": "web-server",
+    "message": "2025-06-30 00:19:21 [DEBUG] web-server: Backup completed successfully",
+    "line_number": 89,
+    "source": "kubernetes_logs"
+  },
+  {
+    "timestamp": "2025-06-30T00:24:21.824712",
+    "level": "ERROR",
+    "service": "cache",
+    "message": "2025-06-30 00:24:21 [ERROR] cache: File uploaded: document.pdf",
+    "line_number": 90,
+    "source": "kubernetes_logs"
+  },
+  {
+    "timestamp": "2025-06-30T00:29:21.824712",
+    "level": "DEBUG",
+    "service": "web-server",
+    "message": "2025-06-30 00:29:21 [DEBUG] web-server: File uploaded: document.pdf",
+    "line_number": 91,
+    "source": "kubernetes_logs"
+  },
+  {
+    "timestamp": "2025-06-30T00:34:21.824712",
+    "level": "DEBUG",
+    "service": "web-server",
+    "message": "2025-06-30 00:34:21 [DEBUG] web-server: Database connection established",
+    "line_number": 92,
+    "source": "kubernetes_logs"
+  },
+  {
+    "timestamp": "2025-06-30T00:39:21.824712",
+    "level": "WARN",
+    "service": "auth-service",
+    "message": "2025-06-30 00:39:21 [WARN] auth-service: Database connection established",
+    "line_number": 93,
+    "source": "kubernetes_logs"
+  },
+  {
+    "timestamp": "2025-06-30T00:44:21.824712",
+    "level": "DEBUG",
+    "service": "database",
+    "message": "2025-06-30 00:44:21 [DEBUG] database: Request processed successfully",
+    "line_number": 94,
+    "source": "kubernetes_logs"
+  },
+  {
+    "timestamp": "2025-06-30T00:49:21.824712",
+    "level": "WARN",
+    "service": "database",
+    "message": "2025-06-30 00:49:21 [WARN] database: File uploaded: document.pdf",
+    "line_number": 95,
+    "source": "kubernetes_logs"
+  },
+  {
+    "timestamp": "2025-06-30T00:54:21.824712",
+    "level": "INFO",
+    "service": "database",
+    "message": "2025-06-30 00:54:21 [INFO] database: API rate limit exceeded",
+    "line_number": 96,
+    "source": "kubernetes_logs"
+  },
+  {
+    "timestamp": "2025-06-30T00:59:21.824712",
+    "level": "INFO",
+    "service": "auth-service",
+    "message": "2025-06-30 00:59:21 [INFO] auth-service: Cache miss for key: user_123",
+    "line_number": 97,
+    "source": "kubernetes_logs"
+  },
+  {
+    "timestamp": "2025-06-30T01:04:21.824712",
+    "level": "WARN",
+    "service": "web-server",
+    "message": "2025-06-30 01:04:21 [WARN] web-server: Memory usage: 75%",
+    "line_number": 98,
+    "source": "kubernetes_logs"
+  },
+  {
+    "timestamp": "2025-06-30T01:09:21.824712",
+    "level": "WARN",
+    "service": "cache",
+    "message": "2025-06-30 01:09:21 [WARN] cache: Database connection established",
+    "line_number": 99,
+    "source": "kubernetes_logs"
+  },
+  {
+    "timestamp": "2025-06-30T01:14:21.824712",
+    "level": "WARN",
+    "service": "auth-service",
+    "message": "2025-06-30 01:14:21 [WARN] auth-service: Database connection established",
+    "line_number": 100,
+    "source": "kubernetes_logs"
+  }
+]
