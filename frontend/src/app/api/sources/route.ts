@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server';
 
-const FLASK_BACKEND_URL = process.env.FLASK_BACKEND_URL || 'http://localhost:8000';
+const FLASK_BACKEND_URL = process.env.FLASK_BACKEND_URL || 'http://backend:8000';
 
 export async function GET() {
   try {

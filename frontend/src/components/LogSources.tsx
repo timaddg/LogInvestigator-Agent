@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { LogSource, AnalysisData } from '@/types';
 
 interface LogSourcesProps {
@@ -15,11 +15,7 @@ export default function LogSources({ onAnalysisComplete, onError, onLoading }: L
   const [downloading, setDownloading] = useState<string | null>(null);
   const [selectedCategory, setSelectedCategory] = useState<string>('');
 
-  useEffect(() => {
-    fetchSources();
-  }, []);
-
-  const fetchSources = async () => {
+  const fetchSources = useCallback(async () => {
     try {
       const response = await fetch('/api/sources');
       const data = await response.json();
@@ -40,7 +36,11 @@ export default function LogSources({ onAnalysisComplete, onError, onLoading }: L
     } finally {
       setLoading(false);
     }
-  };
+  }, [onError]);
+
+  useEffect(() => {
+    fetchSources();
+  }, [fetchSources]);
 
   const handleDownload = async (sourceName: string) => {
     setDownloading(sourceName);

@@ -1,0 +1,71 @@
+version: '3.8'
+
+services:
+  backend:
+    build:
+      context: ..
+      dockerfile: docker/backend.Dockerfile
+    container_name: log-investigator-backend
+    ports:
+      - "8000:8000"
+    environment:
+      - FLASK_ENV=production
+      - GEMINI_API_KEY=${GEMINI_API_KEY}
+      - GEMINI_MODEL=${GEMINI_MODEL:-gemini-2.5-pro}
+      - GEMINI_MAX_TOKENS=${GEMINI_MAX_TOKENS:-2048}
+      - GEMINI_TEMPERATURE=${GEMINI_TEMPERATURE:-0.3}
+      - ENABLE_LOG_OPTIMIZATION=${ENABLE_LOG_OPTIMIZATION:-true}
+      - MAX_INPUT_TOKENS=${MAX_INPUT_TOKENS:-30000}
+      - MAX_LOG_ENTRIES=${MAX_LOG_ENTRIES:-1000}
+      - SAMPLE_SIZE=${SAMPLE_SIZE:-500}
+      - LOG_LEVEL=${LOG_LEVEL:-INFO}
+      - SECRET_KEY=${SECRET_KEY:-your-secret-key-change-this}
+    volumes:
+      - ./data:/app/data
+      - ./uploads:/app/uploads
+      - ./logs:/app/logs
+    networks:
+      - log-investigator-network
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+  frontend:
+    build:
+      context: ..
+      dockerfile: docker/frontend.Dockerfile
+    container_name: log-investigator-frontend
+    ports:
+      - "4000:4000"
+    environment:
+      - NODE_ENV=production
+      - FLASK_BACKEND_URL=http://backend:8000
+    depends_on:
+      backend:
+        condition: service_healthy
+    networks:
+      - log-investigator-network
+    restart: unless-stopped
+
+  # Optional: Redis for caching (uncomment if needed)
+  # redis:
+  #   image: redis:7-alpine
+  #   container_name: log-investigator-redis
+  #   ports:
+  #     - "6379:6379"
+  #   volumes:
+  #     - redis_data:/data
+  #   networks:
+  #     - log-investigator-network
+  #   restart: unless-stopped
+
+networks:
+  log-investigator-network:
+    driver: bridge
+
+# volumes:
+#   redis_data:  # Uncomment if using Redis 

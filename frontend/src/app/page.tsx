@@ -4,7 +4,7 @@ import { useState } from 'react';
 import FileUpload from '@/components/FileUpload';
 import LogSources from '@/components/LogSources';
 import AnalysisResults from '@/components/AnalysisResults';
-import { AnalysisData, LogSource } from '@/types';
+import { AnalysisData } from '@/types';
 
 export default function Home() {
   const [analysisData, setAnalysisData] = useState<AnalysisData | null>(null);
