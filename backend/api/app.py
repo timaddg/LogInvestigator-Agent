@@ -18,6 +18,10 @@ from werkzeug.exceptions import RequestEntityTooLarge
 import sys
 sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
 
+# Get the project root directory (2 levels up from api/)
+PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.dirname(__file__)))
+FRONTEND_OUT_DIR = os.path.join(PROJECT_ROOT, 'frontend', 'out')
+
 from config.config import config
 from logic.processors.log_loader import LogLoader
 from logic.analyzers.ai_analyzer import AIAnalyzer
@@ -49,7 +53,7 @@ def allowed_file(filename):
 @app.route('/')
 def index():
     """Serve the Next.js frontend."""
-    return send_from_directory('../frontend/out', 'index.html')
+    return send_from_directory(FRONTEND_OUT_DIR, 'index.html')
 
 @app.route('/<path:path>')
 def serve_frontend(path):
@@ -59,7 +63,7 @@ def serve_frontend(path):
         return jsonify({'error': 'API routes not available in static export'}), 404
     
     # Serve static files
-    return send_from_directory('../frontend/out', path)
+    return send_from_directory(FRONTEND_OUT_DIR, path)
 
 
 @app.route('/upload', methods=['POST'])
