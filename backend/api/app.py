@@ -54,6 +54,11 @@ def index():
 @app.route('/<path:path>')
 def serve_frontend(path):
     """Serve static files from the Next.js build."""
+    # Handle API routes by passing them to the backend
+    if path.startswith('api/'):
+        return jsonify({'error': 'API routes not available in static export'}), 404
+    
+    # Serve static files
     return send_from_directory('../frontend/out', path)
 
 

@@ -24,7 +24,7 @@ export default function FileUpload({ onAnalysisComplete, onError, onLoading }: F
       const formData = new FormData();
       formData.append('file', file);
 
-      const response = await fetch('/api/upload', {
+      const response = await fetch('/upload', {
         method: 'POST',
         body: formData,
       });

@@ -17,7 +17,7 @@ export default function LogSources({ onAnalysisComplete, onError, onLoading }: L
 
   const fetchSources = useCallback(async () => {
     try {
-      const response = await fetch('/api/sources');
+      const response = await fetch('/sources');
       const data = await response.json();
       
       if (!response.ok) {
@@ -47,7 +47,7 @@ export default function LogSources({ onAnalysisComplete, onError, onLoading }: L
     onLoading(true);
 
     try {
-      const response = await fetch(`/api/download/${sourceName}`, {
+      const response = await fetch(`/download/${sourceName}`, {
         method: 'POST',
       });
 

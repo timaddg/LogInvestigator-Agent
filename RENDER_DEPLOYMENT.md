@@ -97,10 +97,17 @@ You can also set these for customization:
 
 On Render, the application runs as a single service that:
 
-1. **Builds the frontend** during deployment
+1. **Builds the frontend** during deployment (Next.js static export)
 2. **Serves static files** from the Flask backend
-3. **Handles API requests** through Flask routes
+3. **Handles API requests** directly through Flask routes (no Next.js API routes)
 4. **Uses Render's built-in SSL** and load balancing
+
+### Frontend-Backend Integration
+
+- **Static Export**: Next.js builds to static HTML/CSS/JS files
+- **Direct API Calls**: Frontend JavaScript calls Flask endpoints directly
+- **Single Service**: Both frontend and backend run in the same container
+- **No API Routes**: Removed Next.js API routes to avoid static export conflicts
 
 ## Monitoring
 
