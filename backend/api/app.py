@@ -48,8 +48,13 @@ def allowed_file(filename):
 
 @app.route('/')
 def index():
-    """Main page with file upload interface."""
-    return render_template('index.html')
+    """Serve the Next.js frontend."""
+    return send_from_directory('../frontend/out', 'index.html')
+
+@app.route('/<path:path>')
+def serve_frontend(path):
+    """Serve static files from the Next.js build."""
+    return send_from_directory('../frontend/out', path)
 
 
 @app.route('/upload', methods=['POST'])
@@ -189,4 +194,5 @@ if __name__ == '__main__':
     print(f"Upload folder: {app.config['UPLOAD_FOLDER']}")
     print(f"Max file size: {app.config['MAX_CONTENT_LENGTH'] / (1024*1024):.1f}MB")
     
-    app.run(debug=True, host='0.0.0.0', port=8000) 
+    port = int(os.environ.get('PORT', 8000))
+    app.run(debug=False, host='0.0.0.0', port=port) 

@@ -1,0 +1,10 @@
+python-dotenv==1.0.0
+pandas
+rich
+google-generativeai==0.8.3
+requests==2.31.0
+flask==3.1.1
+flask-cors==6.0.1
+watchdog==3.0.0
+psutil==6.1.0
+gunicorn==21.2.0 

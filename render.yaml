@@ -1,0 +1,22 @@
+services:
+  - type: web
+    name: log-investigator
+    env: python
+    plan: starter
+    buildCommand: |
+      pip install -r requirements.txt
+      cd frontend && npm install && npm run build
+    startCommand: |
+      chmod +x render-start.sh
+      ./render-start.sh
+    envVars:
+      - key: GEMINI_API_KEY
+        sync: false
+      - key: NODE_ENV
+        value: production
+      - key: PYTHONPATH
+        value: /opt/render/project/src/backend
+      - key: FLASK_ENV
+        value: production
+    healthCheckPath: /health
+    autoDeploy: true 

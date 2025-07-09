@@ -90,6 +90,11 @@ Dockerfile*
 docker-compose*
 .dockerignore
 
+# Render
+render.yaml
+render-start.sh
+RENDER_DEPLOYMENT.md
+
 # Other
 Makefile
 apache_access_logs.json

@@ -86,10 +86,10 @@ Examples:
     elif args.mode == 'web':
         # Import and run web server
         from api.app import app
+        port = int(os.environ.get('PORT', 8000))
         print("Starting Log Investigator Web Interface...")
-        print("Frontend: http://localhost:4000")
-        print("Backend:  http://localhost:8000")
-        app.run(debug=True, host='0.0.0.0', port=8000)
+        print(f"Backend:  http://localhost:{port}")
+        app.run(debug=False, host='0.0.0.0', port=port)
 
 if __name__ == "__main__":
     main() 
