@@ -79,20 +79,33 @@ log-investigator/
 
 3. **Start with Docker**
    ```bash
-   # Using the helper script
-   ./docker-helper.sh start
-   
-   # Or using Make
-   make dev
-   
-   # Or using Docker Compose directly
+   # Build and start the application
    docker-compose up --build -d
+   
+   # Or build and run in one command
+   docker build -t log-investigator .
+   docker run -p 4000:4000 -p 8000:8000 --env-file .env log-investigator
    ```
 
 4. **Access the application**
    - Frontend: http://localhost:4000
    - Backend API: http://localhost:8000
    - Health Check: http://localhost:8000/health
+
+5. **Docker commands**
+   ```bash
+   # View logs
+   docker-compose logs -f
+   
+   # Stop the application
+   docker-compose down
+   
+   # Restart the application
+   docker-compose restart
+   
+   # Rebuild and restart
+   docker-compose up --build -d
+   ```
 
 ### Option 2: Local Development
 
@@ -146,19 +159,22 @@ SAMPLE_SIZE=500
 
 ```bash
 # Start all services
-./docker-helper.sh start
+docker-compose up --build -d
 
 # View logs
-./docker-helper.sh logs
+docker-compose logs -f
 
 # Check status
-./docker-helper.sh status
+docker-compose ps
 
 # Stop services
-./docker-helper.sh stop
+docker-compose down
 
 # Restart services
-./docker-helper.sh restart
+docker-compose restart
+
+# Rebuild and restart
+docker-compose up --build -d
 ```
 
 ### Web Interface (Local Development)
